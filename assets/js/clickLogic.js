@@ -17,17 +17,20 @@ let observer = new MutationObserver(mutNode => {
     setTimeout(() => {
       document.forms.formLogInWithLogin.addEventListener('submit', e => {
         e.preventDefault()
-        console.log(loginName, loginPass)
         if (loginName.value && loginPass.value) {
           loginName.style.border = `1px solid #c1c5c8`
           loginPass.style.border = `1px solid #c1c5c8`
+          loginPass.parentElement.querySelector('.stop').style.display = 'inline-block'
+          loginName.parentElement.querySelector('.stop').style.display = 'inline-block'
           location.href = location.href
         } else {
           if (!loginName.value) {
             loginName.style.border = `1px solid #b63535`
+            loginName.parentElement.querySelector('.stop').style.display = 'inline-block'
           }
           if (!loginPass.value) {
             loginPass.style.border = `1px solid #b63535`
+            loginPass.parentElement.querySelector('.stop').style.display = 'inline-block'
           }
         }
       })

@@ -1,3 +1,11 @@
+setTimeout(()=>{
+  loading.classList.add('hidden')
+  document.querySelector('.app_main').classList.remove('hidden')
+  document.querySelector('.app_main').classList.add('show')
+  maxHeightForUl()
+},2000)
+
+
 function maxHeightForUl() {
   const mainListWithEcp = document.querySelectorAll('.main__list_with_ecp'),
     mainMenuWithEcp = document.querySelector('.main__menu_with_ecp')
@@ -10,4 +18,3 @@ function maxHeightForUl() {
   }
 }
 
-maxHeightForUl()

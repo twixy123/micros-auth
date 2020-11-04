@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="assets/fonts/nunitosans/nunitosans.css">
   <link rel="stylesheet" href="assets/fonts/roboto/roboto.css">
   <link rel="stylesheet" href="assets/css/index.css">
-  <title>Document</title>
+  <title>Вход в систему | Micros24</title>
 </head>
 <body>
 
@@ -18,7 +18,7 @@
   <div id="appMain">
     <div class="app_header">
       <a href="#">
-        <svg width="165px" height="29px" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1"
+        <svg width="200px" height="40px" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1"
              shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality"
              fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 7082100 1208500"
              xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xodm="http://www.corel.com/coreldraw/odm/2003"><g id="Слой_x0020_1">
@@ -48,7 +48,19 @@
                     </g></svg>
       </a>
     </div>
-    <div class="app_main">
+
+    <div class="lds-roller" id="loading">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <div class="app_main hidden">
       <h3 class="main__title" id="title">
         Авторизация
       </h3>
@@ -60,7 +72,8 @@
             <li class="main__list_with_ecp">
               <a href="#" class="main__link_with_ecp">
                 <span class="logo">
-                  <img src="./assets/images/add-contact-to-company.png" alt="">
+                  <i class="far fa-building"></i>
+                  <!--                  <img src="./assets/images/add-contact-to-company.png" alt="">-->
                 </span>
                 <span class="details">
                   <span class="ecp_name">OOO Micros Development</span>
@@ -68,7 +81,6 @@
                 </span>
                 <span class="ecp_info">
                   <i class="fas fa-info-circle"></i>
-
                   <span class="ecp_info__text">
                     Годен до 12.12.2021
                   </span>
@@ -78,43 +90,8 @@
             <li class="main__list_with_ecp">
               <a href="#" class="main__link_with_ecp">
                 <span class="logo">
-                  <img src="./assets/images/add-contact-to-user.png" alt="">
-                </span>
-                <span class="details">
-                  <span class="ecp_name">Иванов Иван Иванович</span>
-                  <span class="ecp_tin">999999999</span>
-                </span>
-                <span class="ecp_info">
-                  <i class="fas fa-info-circle"></i>
-
-                  <span class="ecp_info__text">
-                    Годен до 12.12.2021
-                  </span>
-                </span>
-              </a>
-            </li>
-            <li class="main__list_with_ecp">
-              <a href="#" class="main__link_with_ecp">
-                <span class="logo">
-                  <img src="./assets/images/add-contact-to-user.png" alt="">
-                </span>
-                <span class="details">
-                  <span class="ecp_name">Иванов Иван Иванович</span>
-                  <span class="ecp_tin">999999999</span>
-                </span>
-                <span class="ecp_info">
-                  <i class="fas fa-info-circle"></i>
-
-                  <span class="ecp_info__text">
-                    Годен до 12.12.2021
-                  </span>
-                </span>
-              </a>
-            </li>
-            <li class="main__list_with_ecp">
-              <a href="#" class="main__link_with_ecp">
-                <span class="logo">
-                  <img src="./assets/images/add-contact-to-user.png" alt="">
+                  <i class="far fa-user-circle"></i>
+                  <!--                  <img src="./assets/images/add-contact-to-user.png" alt="">-->
                 </span>
                 <span class="details">
                   <span class="ecp_name">Иванов Иван Иванович</span>
@@ -136,10 +113,16 @@
             <p class="field">
               <i class="fas fa-user"></i>
               <input type="text" id="loginName" name="login" placeholder="login">
+              <span class="stop">
+                <i class="fas fa-ban"></i>
+              </span>
             </p>
             <p class="field">
               <i class="fas fa-lock"></i>
               <input type="password" id="loginPass" value="password">
+              <span class="stop">
+                <i class="fas fa-ban"></i>
+              </span>
             </p>
 
             <div class="form_footer">
@@ -204,6 +187,10 @@
         </div>
       </div>
 
+      <div id="condition">
+        <p>Входя в систему вы соглашаетесь с <a href="#" class="usual_link">Условиями использования</a></p>
+      </div>
+
       <div class="create_account_block">
         <p>Новый пользователь?</p>
         <a id="registration" href="#" class="usual_link">Регистрация</a>
@@ -215,7 +202,7 @@
       ©2013-2020 ЧП "Micros Development". Все права защищены.
     </p>
     <p>
-      <a href="#" class="usual_link">Условия использования</a>&nbsp; - &nbsp;<a class="usual_link" id="toContacts" href="#">Техническая поддержка</a>
+      <a class="usual_link" id="toContacts" href="#">Техническая поддержка</a>
     </p>
   </div>
 </div>
