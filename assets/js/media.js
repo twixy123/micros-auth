@@ -5,10 +5,8 @@ function maxHeightForUl() {
     mainMenuWithEcp.style.maxHeight = ((mainListWithEcp[0].clientHeight * 4) + 11) + 'px'
   } else if (document.body.clientHeight > 850) {
     mainMenuWithEcp.style.maxHeight = ((mainListWithEcp[0].clientHeight * 3) + 11) + 'px'
-  } else if (document.body.clientHeight > 800) {
-    mainMenuWithEcp.style.maxHeight = ((mainListWithEcp[0].clientHeight * 2) + 11) + 'px'
-  } else if (document.body.clientHeight < 800) {
-    mainMenuWithEcp.style.maxHeight = ((mainListWithEcp[0].clientHeight * 3) + 11) + 'px'
+  } else if (document.body.clientHeight < 850) {
+    mainMenuWithEcp.style.maxHeight = '100%'
   }
 }
 
