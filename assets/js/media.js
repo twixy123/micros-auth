@@ -1,0 +1,15 @@
+function maxHeightForUl() {
+  const mainListWithEcp = document.querySelectorAll('.main__list_with_ecp'),
+    mainMenuWithEcp = document.querySelector('.main__menu_with_ecp')
+  if (document.body.clientHeight > 999) {
+    mainMenuWithEcp.style.maxHeight = ((mainListWithEcp[0].clientHeight * 4) + 11) + 'px'
+  } else if (document.body.clientHeight > 850) {
+    mainMenuWithEcp.style.maxHeight = ((mainListWithEcp[0].clientHeight * 3) + 11) + 'px'
+  } else if (document.body.clientHeight > 800) {
+    mainMenuWithEcp.style.maxHeight = ((mainListWithEcp[0].clientHeight * 2) + 11) + 'px'
+  } else if (document.body.clientHeight < 800) {
+    mainMenuWithEcp.style.maxHeight = ((mainListWithEcp[0].clientHeight * 1.5) + 11) + 'px'
+  }
+}
+
+maxHeightForUl()
