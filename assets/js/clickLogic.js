@@ -61,7 +61,7 @@ otherMethod.addEventListener('click', e => {
     signInWithLogAndPass.classList.add('show')
   } else if (localStorage.getItem('type') == 'Login') {
     setTimeout(() => {
-      maxHeightForUl()
+      // maxHeightForUl()
     }, 0)
     localStorage.setItem('type', 'ECP')
     signInWithLogAndPass.classList.remove('show')
