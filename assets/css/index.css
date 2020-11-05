@@ -9,6 +9,7 @@
     --color-dark-gray: #333;
     --color-gray: #4C4C4C;
     --color-light-gray: #ECEEF1;
+    --color-light-gray-hover: rgba(246, 246, 246, 0.4);
     --color-border-gray: #C1C5C8;
     --color-light-blue: #f3f9ff;
 }
@@ -153,7 +154,7 @@ body {
 }
 
 .main__link_with_ecp:hover {
-    background-color: var(--color-light-blue);
+    background-color: var(--color-light-gray-hover);
 }
 
 .main__link_with_ecp.active {
@@ -477,6 +478,7 @@ body {
     width: fit-content;
     align-items: center;
     justify-content: center;
+    font-family: Roboto;
 }
 
 #appFooter p {
