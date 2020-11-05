@@ -105,6 +105,15 @@ toContacts.addEventListener('click', e => {
   frgtPass.classList.add('hidden')
 })
 
+backToAuthLogin.addEventListener('click', e=>{
+  e.preventDefault()
+  localStorage.setItem('type', 'Login')
+  frgtPass.classList.remove('show')
+  frgtPass.classList.add('hidden')
+  signInWithLogAndPass.classList.add('show')
+  signInWithLogAndPass.classList.remove('hidden')
+})
+
 
 
 
