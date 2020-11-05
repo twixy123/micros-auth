@@ -1,27 +1,42 @@
 <!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="assets/fonts/fonawesome/all.min.css">
-  <link rel="stylesheet" href="assets/fonts/nunitosans/nunitosans.css">
-  <link rel="stylesheet" href="assets/fonts/roboto/roboto.css">
-  <link rel="stylesheet" href="assets/css/index.css">
-  <title>Вход в систему | Micros24</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/fonts/fonawesome/all.min.css">
+    <link rel="stylesheet" href="assets/fonts/nunitosans/nunitosans.css">
+    <link rel="stylesheet" href="assets/fonts/roboto/roboto.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <title>Вход в систему | Micros24</title>
 </head>
 <body>
 
 <div id="app">
-  <div id="appMain">
-    <div class="app_header">
-      <a href="#">
-        <svg width="200px" height="40px" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1"
-             shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality"
-             fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 7082100 1208500"
-             xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xodm="http://www.corel.com/coreldraw/odm/2003"><g id="Слой_x0020_1">
+    <div id="loading">
+        <div class="lds-roller">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+
+    <div id="appMain" class="hidden">
+        <div class="app_header">
+            <a href="#">
+                <svg width="200px" height="40px" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1"
+                     shape-rendering="geometricPrecision" text-rendering="geometricPrecision"
+                     image-rendering="optimizeQuality"
+                     fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 7082100 1208500"
+                ><g id="Слой_x0020_1">
                         <metadata id="CorelCorpID_0Corel-Layer"></metadata>
                         <path fill="#2F8DCB"
                               d="M3100 284100c4500,62700 68900,42300 101500,129100 7800,21100 6500,38900 6000,95000 -900,94000 2000,312100 -5300,401200 -14700,179600 -106100,124400 -105300,210200 500,45500 41100,55800 84500,58800 53100,3600 222000,8400 266600,-11300 34800,-15300 63100,-75700 18800,-102400 -37100,-22300 -53700,-18500 -58600,-72500 -2700,-30500 -9900,-253500 9900,-265900 14100,-8900 22400,10700 36000,38200l142000 300800c26700,56400 38600,89000 74800,88700 29000,-300 37800,-18300 60600,-64700 17200,-34900 155100,-339100 180000,-340100 18600,-600 21600,22800 22800,55800 1200,33600 3300,165600 -5900,190800 -16900,46600 -88500,68600 -74700,127000 7700,32600 44500,54600 81700,62200 68500,13900 267900,13000 338300,4600 42100,-5000 68700,-25100 83700,-56700 27600,-58400 -25300,-81200 -47200,-109800 -30300,-39400 -26900,-120700 -27600,-194900 -800,-88800 -3400,-292900 1500,-371900 9300,-148400 92000,-96400 87600,-194200 -1600,-33900 -23600,-47000 -55600,-66200 -40000,-24000 -65300,-25500 -123700,-26800 -194600,-4600 -199800,8200 -307400,208000 -28700,53300 -67200,125700 -90800,167100 -24500,42700 -46400,80700 -79600,32800 -22500,-32400 -102700,-219200 -161900,-302300 -80900,-113600 -62400,-107400 -177400,-108000 -82600,-400 -231000,-6400 -269400,80800 -5400,12300 -6900,23800 -5900,36600z"></path>
@@ -46,165 +61,158 @@
                         <path fill="#2F8DCB"
                               d="M6348800 610200c0,44200 0,88400 0,132600 -29000,-400 -57900,-800 -86900,-1100 29000,-43900 57900,-87700 86900,-131500z"></path>
                     </g></svg>
-      </a>
-    </div>
+            </a>
+        </div>
 
-    <div class="lds-roller" id="loading">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
+        <div class="app_main">
+            <h3 class="main__title" id="title">
+                Авторизация
+            </h3>
+            <p id="infoSignTitle">
+                Авторизоваться с помощью электронной цифровой подписи выданной государственным налоговым комитетом
+            </p>
 
-    <div class="app_main hidden">
-      <h3 class="main__title" id="title">
-        Авторизация
-      </h3>
-      <p id="infoSignTitle">Войти при помощи ЭЦП</p>
-
-      <div id="mainBlock" class="show">
-        <div id="signInWithECP" class="main__block show">
-          <ul class="main__menu_with_ecp">
-            <li class="main__list_with_ecp">
-              <a href="#" class="main__link_with_ecp">
+            <div id="mainBlock" class="show">
+                <div id="signInWithECP" class="main__block show">
+                    <ul class="main__menu_with_ecp">
+                        <li class="main__list_with_ecp">
+                            <a href="#" class="main__link_with_ecp">
                 <span class="logo">
                   <i class="far fa-building"></i>
-                  <!--                  <img src="./assets/images/add-contact-to-company.png" alt="">-->
+                    <!--                  <img src="./assets/images/add-contact-to-company.png" alt="">-->
                 </span>
-                <span class="details">
+                                <span class="details">
                   <span class="ecp_name">OOO Micros Development</span>
                   <span class="ecp_tin">999999999</span>
                 </span>
-                <span class="ecp_info">
+                                <span class="ecp_info">
                   <i class="fas fa-info-circle"></i>
                   <span class="ecp_info__text">
                     Годен до 12.12.2021
                   </span>
                 </span>
-              </a>
-            </li>
-            <li class="main__list_with_ecp">
-              <a href="#" class="main__link_with_ecp">
+                            </a>
+                        </li>
+                        <li class="main__list_with_ecp">
+                            <a href="#" class="main__link_with_ecp">
                 <span class="logo">
                   <i class="far fa-user-circle"></i>
-                  <!--                  <img src="./assets/images/add-contact-to-user.png" alt="">-->
+                    <!--                  <img src="./assets/images/add-contact-to-user.png" alt="">-->
                 </span>
-                <span class="details">
+                                <span class="details">
                   <span class="ecp_name">Иванов Иван Иванович</span>
                   <span class="ecp_tin">999999999</span>
                 </span>
-                <span class="ecp_info">
+                                <span class="ecp_info">
                   <i class="fas fa-info-circle"></i>
 
                   <span class="ecp_info__text">
                     Годен до 12.12.2021
                   </span>
                 </span>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="signInWithLogAndPass" class="main__block hidden">
-          <form id="formLogInWithLogin" class="form" name="formLogInWithLogin">
-            <p class="field">
-              <i class="fas fa-user"></i>
-              <input type="text" id="loginName" name="login" placeholder="login">
-              <span class="stop">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div id="signInWithLogAndPass" class="main__block hidden">
+                    <form id="formLogInWithLogin" class="form" name="formLogInWithLogin">
+                        <p class="field">
+                            <label for="loginName">Логин:</label>
+                            <input type="text" id="loginName" name="login" placeholder="login">
+<!--                            <span class="small-description">Какое-то описание</span>-->
+                            <span class="stop">
                 <i class="fas fa-ban"></i>
               </span>
-            </p>
-            <p class="field">
-              <i class="fas fa-lock"></i>
-              <input type="password" id="loginPass" value="password">
-              <span class="stop">
+                        </p>
+                        <p class="field">
+                            <label for="loginPass">Пароль:</label>
+                            <input type="password" id="loginPass" value="password">
+<!--                            <span class="small-description">Какое-то описание</span>-->
+                            <span class="stop">
                 <i class="fas fa-ban"></i>
               </span>
-            </p>
+                        </p>
 
-            <div class="form_footer">
-              <button id="logInWithLogin" class="btn">Войти</button>
-              <a href="#" id="forgotPassword" class="usual_link">
-                Забыли пароль?
-              </a>
+                        <div class="form_footer">
+                            <button id="logInWithLogin" class="btn">Войти</button>
+                            <a href="#" id="forgotPassword" class="usual_link">
+                                Забыли пароль?
+                            </a>
+                        </div>
+                    </form>
+                </div>
+                <div id="frgtPass" class="main__block hidden">
+                    <form id="formForgotPass" class="form" name="formLogInWithLogin">
+                        <p class="field">
+                            <i class="fas fa-user"></i>
+                            <input type="email" name="email" placeholder="example@mail.uz">
+                        </p>
+                        <div class="form_footer">
+                            <button id="forgotPass" class="btn">Далее</button>
+                        </div>
+                    </form>
+                </div>
+                <div id="contacts" class="main__block hidden">
+                    <form id="formContacts" class="form" name="formContacts">
+                        <p class="field">
+                            <label for="contactsName">ФИО:</label>
+                            <input id="contactsName" type="name" name="name" placeholder="Иванов Иван Иванович">
+                        </p>
+                        <p class="field">
+                            <label for="contactsCompany">Название компании:</label>
+                            <input id="contactsCompany" type="text" name="company" placeholder="OOO My Company">
+                        </p>
+                        <p class="field">
+                            <label for="contactsPhone">Телефон:</label>
+                            <input id="contactsPhone" type="text" name="phone" placeholder="+998 99 999 99 99">
+                        </p>
+                        <p class="field">
+                            <label for="contactsEmail">E-mail:</label>
+                            <input id="contactsEmail" type="email" name="email" placeholder="mycompany@domain.uz">
+                        </p>
+                        <p class="field">
+                            <label for="contactsDescription">Сообщение:</label>
+                            <textarea name="description" id="contactsDescription" cols="30" rows="10"></textarea>
+                        </p>
+                        <div class="form_footer">
+                            <button id="sendContacts" class="btn">Отправить</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-          </form>
-        </div>
-        <div id="frgtPass" class="main__block hidden">
-          <form id="formForgotPass" class="form" name="formLogInWithLogin">
-            <p class="field">
-              <i class="fas fa-user"></i>
-              <input type="email" name="email" placeholder="example@mail.uz">
-            </p>
-            <div class="form_footer">
-              <button id="forgotPass" class="btn">Далее</button>
+
+            <div class="other_methods_block">
+                <div class="or_block">
+                    <span class="line"></span>
+                    <span id="or">ИЛИ</span>
+                    <span class="line"></span>
+                </div>
+
+                <div class="use_other_method">
+                    <a href="#" class="usual_link" id="otherMethod">
+                        Войти с помощью логина и пароля
+                    </a>
+                </div>
             </div>
-          </form>
-        </div>
-        <div id="contacts" class="main__block hidden">
-          <form id="formContacts" class="form" name="formContacts">
-            <p class="field">
-              <label for="contactsName">ФИО:</label>
-              <input id="contactsName" type="name" name="name" placeholder="Иванов Иван Иванович">
-            </p>
-            <p class="field">
-              <label for="contactsCompany">Название компании:</label>
-              <input id="contactsCompany" type="text" name="company" placeholder="OOO My Company">
-            </p>
-            <p class="field">
-              <label for="contactsPhone">Телефон:</label>
-              <input id="contactsPhone" type="text" name="phone" placeholder="+998 99 999 99 99">
-            </p>
-            <p class="field">
-              <label for="contactsEmail">E-mail:</label>
-              <input id="contactsEmail" type="email" name="email" placeholder="mycompany@domain.uz">
-            </p>
-            <p class="field">
-              <label for="contactsDescription">Сообщение:</label>
-              <textarea name="description" id="contactsDescription" cols="30" rows="10"></textarea>
-            </p>
-            <div class="form_footer">
-              <button id="sendContacts" class="btn">Отправить</button>
+
+            <div id="condition">
+                <p>Входя в систему вы соглашаетесь с <a href="#" class="usual_link">Условиями использования</a></p>
             </div>
-          </form>
+
+            <div class="create_account_block">
+                <p>Впервые в системе? &nbsp;</p>
+                <a id="registration" href="#" class="usual_link"> Зарегистрироваться</a>
+            </div>
         </div>
-      </div>
-
-      <div class="other_methods_block">
-        <div class="or_block">
-          <span class="line"></span>
-          <span id="or">ИЛИ</span>
-          <span class="line"></span>
-        </div>
-
-        <div class="use_other_method">
-          <a href="#" id="otherMethod">
-            Войти с помощью логина и пароля
-          </a>
-        </div>
-      </div>
-
-      <div id="condition">
-        <p>Входя в систему вы соглашаетесь с <a href="#" class="usual_link">Условиями использования</a></p>
-      </div>
-
-      <div class="create_account_block">
-        <p>Новый пользователь?</p>
-        <a id="registration" href="#" class="usual_link">Регистрация</a>
-      </div>
     </div>
-  </div>
-  <div id="appFooter">
-    <p>
-      <a class="usual_link" id="toContacts" href="#">Техническая поддержка</a>
-    </p>
-    <p>
-      ©2013-2020 ЧП "Micros Development". Все права защищены.
-    </p>
-  </div>
+    <div id="appFooter">
+        <p>
+            <a class="usual_link" id="toContacts" href="#">Техническая поддержка</a>
+        </p>
+        <p>
+            ©2013-2020 ЧП "Micros Development". Все права защищены.
+        </p>
+    </div>
 </div>
 
 <script src="assets/js/media.js"></script>

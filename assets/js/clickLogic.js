@@ -4,13 +4,14 @@ localStorage.setItem('type', 'ECP')
 let observer = new MutationObserver(mutNode => {
   if (localStorage.getItem('type') == 'ECP') {
     title.innerHTML = 'Авторизация'
-    infoSignTitle.innerHTML = 'Войти при помощи ЭЦП'
+    infoSignTitle.innerHTML =
+        'Авторизоваться с помощью электронной цифровой подписи выданной государственным налоговым комитетом'
     otherMethod.innerHTML = 'Войти при помощи логина и пароля'
     obs(app)
   }
   if (localStorage.getItem('type') == 'Login') {
     title.innerHTML = 'Авторизация'
-    infoSignTitle.innerHTML = 'Войти при помощи логина и пароля'
+    infoSignTitle.innerHTML = 'Авторизоваться с помощью логина и пароля'
     otherMethod.innerHTML = 'Войти при помощи ключа ЭЦП'
     obs(app)
 
@@ -20,8 +21,8 @@ let observer = new MutationObserver(mutNode => {
         if (loginName.value && loginPass.value) {
           loginName.style.border = `1px solid #c1c5c8`
           loginPass.style.border = `1px solid #c1c5c8`
-          loginPass.parentElement.querySelector('.stop').style.display = 'inline-block'
-          loginName.parentElement.querySelector('.stop').style.display = 'inline-block'
+          loginPass.parentElement.querySelector('.stop').style.display = 'none'
+          loginName.parentElement.querySelector('.stop').style.display = 'none'
           location.href = location.href
         } else {
           if (!loginName.value) {
@@ -49,17 +50,6 @@ let observer = new MutationObserver(mutNode => {
     obs(app)
   }
 })
-
-function obs(el) {
-  observer.disconnect()
-  observer.observe(el, {
-    attributes: true,
-    subtree: true,
-    attributeFilter: ['class']
-  })
-}
-
-obs(app)
 
 otherMethod.addEventListener('click', e => {
   e.preventDefault()
@@ -116,3 +106,17 @@ toContacts.addEventListener('click', e => {
 })
 
 
+
+
+
+
+function obs(el) {
+  observer.disconnect()
+  observer.observe(el, {
+    attributes: true,
+    subtree: true,
+    attributeFilter: ['class']
+  })
+}
+
+obs(app)

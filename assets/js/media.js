@@ -1,7 +1,7 @@
 setTimeout(()=>{
   loading.classList.add('hidden')
-  document.querySelector('.app_main').classList.remove('hidden')
-  document.querySelector('.app_main').classList.add('show')
+  document.querySelector('#appMain').classList.remove('hidden')
+  document.querySelector('#appMain').classList.add('show')
   maxHeightForUl()
 },2000)
 
