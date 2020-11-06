@@ -225,12 +225,12 @@
             <p id="infoSignTitle"></p>
 
             <div id="mainBlock" class="show">
-                <div id="signInWithECP" class="main__block show">
+                <div id="signInWithECP" class="main__block hidden">
                     <div id="notFound" class="hidden">
                         <i class="fas fa-exclamation-circle"></i>
                         <p>
                             У вас не установлена программа E-IMZO
-                            <a class="usual_link" href="https://e-imzo.uz/">Скачать</a>
+                            <a class="usual_link" href="https://e-imzo.uz/" target="_blank">Скачать</a>
                         </p>
                     </div>
                     <ul id="keysAuth" class="main__menu_with_ecp show">
@@ -317,18 +317,18 @@
                         <p class="field">
                             <label for="loginName">Логин:</label>
                             <input type="text" id="loginName" name="login" placeholder="login">
-                            <span class="small-description hidden">Какое-то описание</span>
+                            <span class="small-description"></span>
                             <span class="stop">
-                <i class="fas fa-ban"></i>
-              </span>
+                                <i class="fas fa-ban"></i>
+                            </span>
                         </p>
                         <p class="field">
                             <label for="loginPass">Пароль:</label>
                             <input type="password" id="loginPass" value="password">
-                            <span class="small-description hidden">Какое-то описание</span>
+                            <span class="small-description"></span>
                             <span class="stop">
-                <i class="fas fa-ban"></i>
-              </span>
+                                <i class="fas fa-ban"></i>
+                            </span>
                         </p>
 
                         <div class="form_footer">
@@ -346,12 +346,41 @@
                             <input type="email" name="email" id="forgotEmailInp" placeholder="example@mail.uz">
                         </p>
                         <div class="form_footer">
-                            <button id="forgotPass" class="btn">Далее</button>
+                            <button id="forgotPass" class="btn" disabled="disabled">Далее</button>
                             <a href="#" id="backToAuthLogin" class="usual_link">
                                 Назад
                             </a>
                         </div>
                     </form>
+                </div>
+                <div id="changePass" class="main__block hidden">
+                    <form id="formChangePassword" class="form" name="formChangePassword">
+                        <p class="field">
+                            <label for="trueEmail">Ваш Email</label>
+                            <input type="email" name="email" id="trueEmail" disabled="disabled"
+                                   placeholder="example@mail.uz">
+                        </p>
+                        <p class="field">
+                            <label for="newPassword">Новый пароль</label>
+                            <input type="password" name="new_password" id="newPassword">
+                            <span class="small-description"></span>
+                        </p>
+                        <p class="field">
+                            <label for="checkNewPassword">Подтвердите пароль</label>
+                            <input type="password" name="check_new_password" id="checkNewPassword">
+                            <span class="small-description"></span>
+                        </p>
+                        <div class="form_footer">
+                            <button id="changePassword" class="btn" disabled="disabled">Далее</button>
+                        </div>
+                    </form>
+                </div>
+                <div id="checkYourEmail" class="main__block hidden">
+                    <i class="fas fa-envelope"></i>
+                    <p>
+                        Письмо с запросом отправлено вам на почту <br>
+                        <a class="usual_link" href="#" id="sendToMail" target="_blank">Проверить почту</a>
+                    </p>
                 </div>
                 <div id="contacts" class="main__block hidden">
                     <form id="formContacts" class="form" name="formContacts">

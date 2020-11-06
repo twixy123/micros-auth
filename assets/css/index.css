@@ -420,12 +420,13 @@ body {
     padding: 5px 0;
     font-family: 'Roboto';
     font-size: 10px;
+    color: #b63535;
 }
 
 .field > .stop {
     position: absolute;
     right: -15px;
-    top: 57%;
+    top: 45%;
     display: none;
 }
 
@@ -447,6 +448,18 @@ body {
     font-family: Roboto;
     color: var(--color-dark-gray);
     border: 1px solid var(--color-border-gray);
+    padding: 6px 6px 6px 8px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 3px;
+}
+
+.field input[disabled=disabled] {
+    font-size: 16px;
+    font-family: Roboto;
+    color: var(--color-dark-gray);
+    border: 1px solid var(--color-border-gray);
+    background-color:var(--color-light-gray);
     padding: 6px 6px 6px 8px;
     width: 100%;
     box-sizing: border-box;
@@ -505,6 +518,15 @@ body {
     border: 1px solid var(--color-logo);
 }
 
+.btn[disabled=disabled]{
+    border: 1px solid var(--color-border-gray);
+    background: var(--color-border-gray);
+}
+
+.btn[disabled=disabled]:hover{
+    background: var(--color-border-gray);
+}
+
 .btn:hover {
     background-image: linear-gradient(#3795d5,var(--color-logo));
 }
@@ -523,6 +545,36 @@ body {
 
 #formForgotPass .form_footer {
     flex-direction: row-reverse;
+}
+
+#formChangePassword .form_footer {
+    flex-direction: row-reverse;
+}
+
+#checkYourEmail{
+    flex-direction: column;
+    padding: 30px 30px 0 30px;
+    align-items: center;
+}
+
+#checkYourEmail i{
+    color: var(--color-dark-gray);
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+#checkYourEmail p{
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-dark-gray);
+    width: 100%;
+    text-align: center;
+}
+
+#checkYourEmail a{
+    font-size: 16px;
+    font-style: italic;
 }
 
 
