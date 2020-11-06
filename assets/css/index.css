@@ -8,6 +8,7 @@
     --color-logo: #2F8DCB;
     --color-dark-gray: #333;
     --color-gray: #4C4C4C;
+    --color-lang-gray: #777777;
     --color-light-gray: #ECEEF1;
     --color-light-gray-hover: rgba(246, 246, 246, 0.4);
     --color-border-gray: #C1C5C8;
@@ -132,6 +133,8 @@ body {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    margin-top: 20px;
+    border-top: 1px solid var(--color-border-gray);
 }
 
 #infoSignTitle {
@@ -139,14 +142,17 @@ body {
     font-size: 14px;
     color: var(--color-dark-gray);
     box-sizing: border-box;
-    padding: 15px 30px 20px;
+    padding: 15px 30px 0;
     text-align: center;
     width: 100%;
-    border-bottom: 1px solid var(--color-border-gray);
 }
 
-#signInWithECP {
+#signInWithECP, #regWithECP {
     padding: 0 !important;
+}
+
+#regWithECP{
+    flex-direction: column;
 }
 
 #notFound{
@@ -238,7 +244,7 @@ body {
     margin-bottom: 7px;
 }
 
-.ecp_name {
+.details span:first-child {
     color: #000 !important;
     font-size: 16px !important;
     font-weight: 500 !important;
@@ -286,12 +292,12 @@ body {
     content: '';
     position: absolute;
     clip-path: polygon(100% 0, 0% 100%, 100% 100%);
-    top: 2px;
-    left: -8px;
+    top: 10px;
+    left: -5px;
     width: 10px;
-    height: 15px;
+    height: 10px;
     background-color: var(--color-border-gray);
-    transform: rotate(-81deg);
+    transform: rotate(-130deg);
 }
 
 .other_methods_block {
@@ -358,7 +364,6 @@ body {
 }*/
 
 #condition{
-    margin-bottom: 20px;
     width: 100%;
     box-sizing: border-box;
     padding: 0 30px;
@@ -388,6 +393,7 @@ body {
     color: var(--color-dark-gray);
     font-size: 14px;
     font-weight: 400;
+    margin-top: 20px;
 }
 
 .create_account_block a{
@@ -407,7 +413,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 10px 0;
+    padding-top: 20px;
     position: relative;
 }
 
@@ -426,7 +432,7 @@ body {
 .field > .stop {
     position: absolute;
     right: -15px;
-    top: 45%;
+    top: 53.5%;
     display: none;
 }
 
@@ -495,7 +501,7 @@ body {
 }
 
 .form_footer {
-    margin-top: 10px;
+    margin-top: 20px;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -506,8 +512,10 @@ body {
 .btn {
     font-size: 16px;
     outline: none;
-    padding: 10px 50px;
+    padding: 10px;
     box-sizing: border-box;
+    max-width: 160px;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -543,11 +551,10 @@ body {
     outline: none;
 }
 
-#formForgotPass .form_footer {
-    flex-direction: row-reverse;
-}
-
-#formChangePassword .form_footer {
+#formForgotPass .form_footer,
+#regWithECP .form_footer,
+#formChangePassword .form_footer,
+#formRegWithLogin .form_footer {
     flex-direction: row-reverse;
 }
 
@@ -600,8 +607,15 @@ body {
     text-align: center;
 }
 
-#appFooter p a{
+#appFooter p > a{
     font-size: 12px;
+    margin-right: 15px;
+}
+
+#appFooter p > span a{
+    color: var(--color-lang-gray);
+    font-size: 12px;
+    font-weight: 500;
 }
 
 

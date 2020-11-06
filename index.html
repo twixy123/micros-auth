@@ -426,18 +426,25 @@
             </div>
 
             <div id="condition">
-                <p>Входя в систему вы соглашаетесь с <a href="#" class="usual_link">Условиями использования</a></p>
+                <p>Входя в систему вы соглашаетесь с <a href="#" target="_blank" class="usual_link">Условиями использования</a></p>
             </div>
 
             <div class="create_account_block">
                 <p>Впервые в системе? &nbsp;</p>
-                <a id="registration" href="#" class="usual_link"> Зарегистрироваться</a>
+                <a id="registration" href="registration.html" class="usual_link"> Зарегистрироваться</a>
             </div>
         </div>
     </div>
     <div id="appFooter">
         <p>
             <a class="usual_link" id="toContacts" href="#">Техническая поддержка</a>
+            <a class="usual_link" href="#">Условиями использования</a>
+
+            <span>
+                <a class="usual_link" href="#">РУС |</a>
+                <a class="usual_link" href="#">OZB |</a>
+                <a class="usual_link" href="#">УЗБ</a>
+            </span>
         </p>
         <p>
             ©2013-2020 ЧП "Micros Development". Все права защищены.
@@ -460,8 +467,8 @@
         var scriptMedia = document.createElement('script')
         var scriptClick = document.createElement('script')
 
-        scriptMedia.setAttribute('src', 'assets/js/media.js')
-        scriptClick.setAttribute('src', 'assets/js/clickLogic.js')
+        scriptMedia.setAttribute('src', 'assets/js/auth/media.js')
+        scriptClick.setAttribute('src', 'assets/js/auth/clickLogic.js')
 
         document.body.insertAdjacentElement('beforeend', scriptMedia)
         document.body.insertAdjacentElement('beforeend', scriptClick)

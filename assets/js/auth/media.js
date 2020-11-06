@@ -1,7 +1,5 @@
 setTimeout(() => {
     document.getElementById('loading').classList.add('hidden')
-    /*changePass.classList.remove('hidden')
-    changePass.classList.add('show')*/
     signInWithECP.classList.remove('hidden')
     signInWithECP.classList.add('show')
     document.querySelector('#appMain').classList.remove('hidden')
