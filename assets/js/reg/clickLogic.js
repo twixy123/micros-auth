@@ -123,7 +123,7 @@ function checkPassword(input) {
     let regPasNum = /(?=.*[0-9])/g
 
     symbols.innerHTML = 'Пароль должен быть не меньше 6 символов'
-    letters.innerHTML = 'Пароль должен содержать заглавные буквы'
+    letters.innerHTML = 'Пароль должен содержать заглавные латинского алфавита буквы'
     numbers.innerHTML = 'Пароль должен содержать цифры'
     symbols.style.color = '#b63535'
     letters.style.color = '#b63535'
