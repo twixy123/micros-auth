@@ -1,7 +1,7 @@
 setTimeout(() => {
     document.getElementById('loading').classList.add('hidden')
-    document.querySelector('#appMain').classList.remove('hidden')
-    document.querySelector('#appMain').classList.add('show')
+    document.querySelector('.app_main').classList.remove('hidden')
+    document.querySelector('.app_main').classList.add('show')
     signInWithECP.classList.remove('hidden')
     signInWithECP.classList.add('show')
 }, 2000)

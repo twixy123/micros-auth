@@ -277,7 +277,6 @@ body {
 
 .ecp_info__text {
     font-size: 12px;
-    font-style: italic;
     display: none;
     background-color: var(--color-border-gray);
     width: max-content;
@@ -433,6 +432,10 @@ body {
     color: #b63535;
 }
 
+#letters, #numbers{
+    padding: 0;
+}
+
 .field > .stop {
     position: absolute;
     right: -15px;
@@ -462,6 +465,7 @@ body {
     width: 100%;
     box-sizing: border-box;
     border-radius: 3px;
+    box-shadow: 0 0 2px #fff;
 }
 
 .field input[disabled=disabled] {
@@ -581,8 +585,8 @@ body {
 }
 
 #checkYourEmail i{
-    color: #0e7b17;
-    font-size: 30px;
+    color: #2F8DCB;
+    font-size: 70px;
     margin-bottom: 10px;
 }
 

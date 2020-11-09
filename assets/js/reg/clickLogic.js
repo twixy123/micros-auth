@@ -71,11 +71,11 @@ regLoginEmail.addEventListener('input', ()=>{
 
 regLoginPhone.addEventListener('input', ()=>{
     let reg = /^((998|\+998)[\- ]?)?(\(?\d{2}\)?[\- ]?)?[\d\- ]{7,10}$/
-    checkInp(regLoginPhone, regLoginPhone.value.match(reg), 'Неккоректно введено поле')
+    checkInp(regLoginPhone, regLoginPhone.value.match(reg), 'Неккоректно заполнено поле')
 })
 
 regLogin.addEventListener('input', ()=>{
-    checkInp(regLogin, regLogin.value, 'Введите логин')
+    checkInp(regLogin, regLogin.value.length > 4, 'Введите корректный логин')
 })
 
 regPass.addEventListener('input', ()=>{
@@ -91,10 +91,14 @@ logInWithLogin.addEventListener('click', e=>{
     const regEmail = /^.+@.+\..+$/i,
           regPhone = /^((998|\+998)[\- ]?)?(\(?\d{2}\)?[\- ]?)?[\d\- ]{7,10}$/,
           regPas = /(?=.*[A-Z])[0-9A-Z]{6,}/g
+    checkInp(regLoginEmail, regLoginEmail.value.match(regEmail), 'Неккоректно заполнено поле')
+    checkInp(regLoginPhone, regLoginPhone.value.match(regPhone), 'Неккоректно заполнено поле')
+    checkInp(regLogin, regLogin.value.length > 4, 'Введите корректный логин')
+    checkPassword(regPass)
     if (
         checkInp(regLoginEmail, regLoginEmail.value.match(regEmail), 'Неккоректно заполнено поле') &&
-        checkInp(regLoginPhone, regLoginPhone.value.match(regPhone), 'Неккоректно введено поле') &&
-        checkInp(regLogin, regLogin.value, 'Введите логин') &&
+        checkInp(regLoginPhone, regLoginPhone.value.match(regPhone), 'Неккоректно заполнено поле') &&
+        checkInp(regLogin, regLogin.value.length > 4, 'Введите корректный логин') &&
         checkPassword(regPass) &&
         checkInp(regCheckPass,regCheckPass.value == regPass.value, 'Пароли не совпадают')
     ){location.href = location.href}
@@ -125,9 +129,9 @@ function checkPassword(input) {
     symbols.innerHTML = 'Пароль должен быть не меньше 6 символов'
     letters.innerHTML = 'Пароль должен содержать заглавные латинского алфавита буквы'
     numbers.innerHTML = 'Пароль должен содержать цифры'
-    symbols.style.color = '#b63535'
-    letters.style.color = '#b63535'
-    numbers.style.color = '#b63535'
+    symbols.style = 'color: #b63535; padding: 5px 0;'
+    letters.style = 'color: #b63535; padding: 5px 0;'
+    numbers.style = 'color: #b63535; padding: 5px 0;'
     input.style.border = '1px solid #b63535'
     input.parentElement.querySelector('.stop').style.display = 'inline-block'
 
@@ -146,10 +150,10 @@ function checkPassword(input) {
         symbols.innerHTML = ''
         letters.innerHTML = ''
         numbers.innerHTML = ''
+        letters.style = 'padding: 0;'
+        numbers.style = 'padding: 0;'
         return true
     }
-
-
     return false
 }
 

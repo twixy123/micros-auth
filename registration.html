@@ -15,14 +15,6 @@
 
 <div id="app" class="show">
 
-    <div id="loading">
-        <div class="spinner">
-            <div class="bounce1"></div>
-            <div class="bounce2"></div>
-            <div class="bounce3"></div>
-        </div>
-    </div>
-
     <div id="oldBrowser" class="hidden">
         <p>
             <a href="#">
@@ -187,7 +179,7 @@
         </p>
     </div>
 
-    <div id="appMain" class="hidden">
+    <div id="appMain" class="show">
         <div class="app_header">
             <a href="#">
                 <svg width="200px" height="40px" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1"
@@ -222,13 +214,22 @@
             </a>
         </div>
 
-        <div class="app_main">
+        <div id="loading">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+
+        <div class="app_main hidden">
             <h3 class="main__title" id="title">
                 Регитсрация
             </h3>
             <p id="infoSignTitle"></p>
 
-            <div id="mainBlock" class="show">
+
+            <div id="mainBlock">
                 <div id="regWithECP" class="main__block hidden">
                     <div id="notFound" class="hidden">
                         <i class="fas fa-exclamation-circle"></i>
@@ -398,16 +399,16 @@
 
                         <div class="form_footer">
                             <button id="logInWithLogin" class="btn">Зарегистрироваться</button>
-                            <p>
-                                <a href="#" id="regPrevBtn" class="usual_link">
-                                    Назад
-                                </a>
-                            </p>
+                            <a href="#" id="regPrevBtn" class="usual_link">
+                                Вернуться назад
+                            </a>
                         </div>
 
                         <div id="condition">
-                            <p>Регистрируясь в системе соглашаетесь с
-                                <a href="#" class="usual_link" target="_blank">Условиями использования</a>
+                            <p>Входя в систему вы соглашаетесь с <a href="#" target="_blank" class="usual_link">Условиями
+                                использования</a>, а так же вы можете свободно выбрать
+                                <a href="https://rouming.uz/ru/operators" target="_blank" class="usual_link">Оператора
+                                    ЭСФ</a>
                             </p>
                         </div>
 
@@ -457,9 +458,7 @@
                         </p>
                         <div class="form_footer">
                             <button id="sendContacts" class="btn">Отправить</button>
-                            <p>
-                                <a href="#" class="usual_link" id="backToRegWithEcp">Назад</a>
-                            </p>
+                            <a href="#" class="usual_link" id="backToRegWithEcp">Вернуться назад</a>
                         </div>
                     </form>
                 </div>
@@ -475,19 +474,13 @@
         <p>
             <a class="usual_link" id="toContacts" href="#">Техническая поддержка</a>
             <a class="usual_link" href="#">Условия использования</a>
-
-            <span class="change_language_block show">
-                <button id="changeLang" class="usual_link">РУС</button>
-
-                <span id="langSpan">
-                    <a class="usual_link" id="lnagRu" href="#">РУС |&nbsp;</a>
-                    <a class="usual_link" id="lnagOz" href="#">OZB |&nbsp;</a>
-                    <a class="usual_link" id="lnagUz" href="#">УЗБ</a>
-                </span>
-            </span>
         </p>
         <p>
             ©2013-2020 ЧП "Micros Development". Все права защищены.
+        </p>
+        <p>
+            <a class="usual_link" href="#">O'zbek tilida</a>
+            <a class="usual_link" href="#">Ўзбек тилида</a>
         </p>
     </div>
 </div>
