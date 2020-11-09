@@ -1,9 +1,9 @@
 setTimeout(() => {
     document.getElementById('loading').classList.add('hidden')
-    signInWithECP.classList.remove('hidden')
-    signInWithECP.classList.add('show')
     document.querySelector('#appMain').classList.remove('hidden')
     document.querySelector('#appMain').classList.add('show')
+    signInWithECP.classList.remove('hidden')
+    signInWithECP.classList.add('show')
 }, 2000)
 
 function maxHeightForUl() {

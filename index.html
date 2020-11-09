@@ -16,7 +16,11 @@
 <div id="app" class="show">
 
     <div id="loading">
-        <img src="assets/images/loader.gif" alt="">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
     </div>
 
     <div id="oldBrowser" class="hidden">
@@ -344,12 +348,18 @@
                         <p class="field">
                             <label for="forgotEmailInp">Введите ваш Email</label>
                             <input type="email" name="email" id="forgotEmailInp" placeholder="example@mail.uz">
+                            <span class="small-description"></span>
+                            <span class="stop">
+                                <i class="fas fa-ban"></i>
+                            </span>
                         </p>
                         <div class="form_footer">
-                            <button id="forgotPass" class="btn" disabled="disabled">Далее</button>
-                            <a href="#" id="backToAuthLogin" class="usual_link">
-                                Назад
-                            </a>
+                            <button id="forgotPass" class="btn">Далее</button>
+                            <p>
+                                <a href="#" id="backToAuthLogin" class="usual_link">
+                                    Назад
+                                </a>
+                            </p>
                         </div>
                     </form>
                 </div>
@@ -364,14 +374,20 @@
                             <label for="newPassword">Новый пароль</label>
                             <input type="password" name="new_password" id="newPassword">
                             <span class="small-description"></span>
+                            <span class="stop">
+                                <i class="fas fa-ban"></i>
+                            </span>
                         </p>
                         <p class="field">
                             <label for="checkNewPassword">Подтвердите пароль</label>
                             <input type="password" name="check_new_password" id="checkNewPassword">
                             <span class="small-description"></span>
+                            <span class="stop">
+                                <i class="fas fa-ban"></i>
+                            </span>
                         </p>
-                        <div class="form_footer">
-                            <button id="changePassword" class="btn" disabled="disabled">Далее</button>
+                        <div class="form_footer center">
+                            <button id="changePassword" class="btn">Далее</button>
                         </div>
                     </form>
                 </div>
@@ -379,7 +395,6 @@
                     <i class="fas fa-envelope"></i>
                     <p>
                         Письмо с запросом отправлено вам на почту <br>
-                        <a class="usual_link" href="#" id="sendToMail" target="_blank">Проверить почту</a>
                     </p>
                 </div>
                 <div id="contacts" class="main__block hidden">
@@ -387,24 +402,44 @@
                         <p class="field">
                             <label for="contactsName">ФИО:</label>
                             <input id="contactsName" type="name" name="name" placeholder="Иванов Иван Иванович">
+                            <span class="small-description"></span>
+                            <span class="stop">
+                                <i class="fas fa-ban"></i>
+                            </span>
                         </p>
                         <p class="field">
                             <label for="contactsCompany">Название компании:</label>
                             <input id="contactsCompany" type="text" name="company" placeholder="OOO My Company">
+                            <span class="small-description"></span>
+                            <span class="stop">
+                                <i class="fas fa-ban"></i>
+                            </span>
                         </p>
                         <p class="field">
                             <label for="contactsPhone">Телефон:</label>
                             <input id="contactsPhone" type="text" name="phone" placeholder="+998 99 999 99 99">
+                            <span class="small-description"></span>
+                            <span class="stop">
+                                <i class="fas fa-ban"></i>
+                            </span>
                         </p>
                         <p class="field">
                             <label for="contactsEmail">E-mail:</label>
                             <input id="contactsEmail" type="email" name="email" placeholder="mycompany@domain.uz">
+                            <span class="small-description"></span>
+                            <span class="stop">
+                                <i class="fas fa-ban"></i>
+                            </span>
                         </p>
                         <p class="field">
                             <label for="contactsDescription">Сообщение:</label>
                             <textarea name="description" id="contactsDescription" cols="30" rows="10"></textarea>
+                            <span class="small-description"></span>
+                            <span class="stop">
+                                <i class="fas fa-ban"></i>
+                            </span>
                         </p>
-                        <div class="form_footer">
+                        <div class="form_footer center">
                             <button id="sendContacts" class="btn">Отправить</button>
                         </div>
                     </form>
@@ -426,7 +461,8 @@
             </div>
 
             <div id="condition">
-                <p>Входя в систему вы соглашаетесь с <a href="#" target="_blank" class="usual_link">Условиями использования</a></p>
+                <p>Входя в систему вы соглашаетесь с <a href="#" target="_blank" class="usual_link">Условиями
+                    использования</a></p>
             </div>
 
             <div class="create_account_block">
@@ -438,13 +474,18 @@
     <div id="appFooter">
         <p>
             <a class="usual_link" id="toContacts" href="#">Техническая поддержка</a>
-            <a class="usual_link" href="#">Условиями использования</a>
+            <a class="usual_link" href="#">Условия использования</a>
 
-            <span>
-                <a class="usual_link" href="#">РУС |</a>
-                <a class="usual_link" href="#">OZB |</a>
-                <a class="usual_link" href="#">УЗБ</a>
+            <span class="change_language_block show">
+                <button id="changeLang" class="usual_link">РУС</button>
+
+                <span id="langSpan">
+                    <a class="usual_link" id="lnagRu" href="#">РУС |&nbsp;</a>
+                    <a class="usual_link" id="lnagOz" href="#">OZB |&nbsp;</a>
+                    <a class="usual_link" id="lnagUz" href="#">УЗБ</a>
+                </span>
             </span>
+
         </p>
         <p>
             ©2013-2020 ЧП "Micros Development". Все права защищены.
@@ -466,12 +507,15 @@
     } else {
         var scriptMedia = document.createElement('script')
         var scriptClick = document.createElement('script')
+        var scriptContacts = document.createElement('script')
 
         scriptMedia.setAttribute('src', 'assets/js/auth/media.js')
         scriptClick.setAttribute('src', 'assets/js/auth/clickLogic.js')
+        scriptContacts.setAttribute('src', 'assets/js/contacts.js')
 
         document.body.insertAdjacentElement('beforeend', scriptMedia)
         document.body.insertAdjacentElement('beforeend', scriptClick)
+        document.body.insertAdjacentElement('beforeend', scriptContacts)
     }
 </script>
 </body>

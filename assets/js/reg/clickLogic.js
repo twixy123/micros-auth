@@ -15,19 +15,13 @@ let observer = new MutationObserver(mutNode => {
 regNextBtn.addEventListener('click', e => {
     e.preventDefault()
     localStorage.setItem('regType', 'Login')
-    regWithECP.classList.add('hidden')
-    regWithECP.classList.remove('show')
-    regWithLogAndPass.classList.add('show')
-    regWithLogAndPass.classList.remove('hidden')
+    ShowHiddenBlock([regWithLogAndPass],[regWithECP])
 })
 
 regPrevBtn.addEventListener('click', e => {
     e.preventDefault()
     localStorage.setItem('regType', 'ECP')
-    regWithECP.classList.remove('hidden')
-    regWithECP.classList.add('show')
-    regWithLogAndPass.classList.remove('show')
-    regWithLogAndPass.classList.add('hidden')
+    ShowHiddenBlock([regWithECP],[regWithLogAndPass])
     formRegWithLogin.querySelectorAll('input').forEach(inp=> {
         inp.style.border = '1px solid #C1C5C8'
         inp.parentElement.querySelector('.stop').style.display ='none'
@@ -39,20 +33,12 @@ regPrevBtn.addEventListener('click', e => {
 toContacts.addEventListener('click', e=>{
     e.preventDefault()
     localStorage.setItem('regType', 'Contacts')
-    regWithECP.classList.remove('show')
-    regWithECP.classList.add('hidden')
-    regWithLogAndPass.classList.remove('show')
-    regWithLogAndPass.classList.add('hidden')
-    contacts.classList.remove('hidden')
-    contacts.classList.add('show')
+    ShowHiddenBlock([contacts],[regWithECP,regWithLogAndPass])
 })
 
 backToRegWithEcp.addEventListener('click', e=>{
     e.preventDefault()
-    contacts.classList.remove('show')
-    contacts.classList.add('hidden')
-    regWithECP.classList.remove('hidden')
-    regWithECP.classList.add('show')
+    ShowHiddenBlock([regWithECP],[contacts])
 })
 
 const ecpKey = document.querySelectorAll('.main__link_with_ecp')
@@ -80,51 +66,76 @@ ecpKey.forEach((key,idx, arr)=>{
 
 regLoginEmail.addEventListener('input', ()=>{
     let reg = /^.+@.+\..+$/i
-    check(regLoginEmail.value.match(reg), regLoginEmail, 'Неккоректно заполнено поле')
+    checkInp(regLoginEmail, regLoginEmail.value.match(reg), 'Неккоректно заполнено поле')
 })
 
 regLoginPhone.addEventListener('input', ()=>{
     let reg = /^((998|\+998)[\- ]?)?(\(?\d{2}\)?[\- ]?)?[\d\- ]{7,10}$/
-    check(regLoginPhone.value.match(reg), regLoginPhone, 'Неккоректно введено поле')
+    checkInp(regLoginPhone, regLoginPhone.value.match(reg), 'Неккоректно введено поле')
 })
 
 regLogin.addEventListener('input', ()=>{
-    check(regLogin.value, regLogin, 'Введите логин')
+    checkInp(regLogin, regLogin.value, 'Введите логин')
 })
 
 regPass.addEventListener('input', ()=>{
-    if (regPass.value.length > 5) regCheckPass.removeAttribute('disabled')
-    check((regPass.value.length > 5), regPass, 'Пароль должен быть не меньше 6 символов')
+    checkInp(regPass,regPass.value.length > 5, 'Пароль должен быть не меньше 6 символов')
 })
 
 regCheckPass.addEventListener('input', ()=>{
-    check((regCheckPass.value == regPass.value), regCheckPass, 'Пароли не совпадают')
+    checkInp(regCheckPass,regCheckPass.value == regPass.value, 'Пароли не совпадают')
 })
 
+logInWithLogin.addEventListener('click', e=>{
+    e.preventDefault()
+    const regEmail = /^.+@.+\..+$/i,
+          regPhone = /^((998|\+998)[\- ]?)?(\(?\d{2}\)?[\- ]?)?[\d\- ]{7,10}$/
+    if (
+        checkInp(regLoginEmail, regLoginEmail.value.match(regEmail), 'Неккоректно заполнено поле') &&
+        checkInp(regLoginPhone, regLoginPhone.value.match(regPhone), 'Неккоректно введено поле') &&
+        checkInp(regLogin, regLogin.value, 'Введите логин') &&
+        checkInp(regPass,regPass.value.length > 5, 'Пароль должен быть не меньше 6 символов') &&
+        checkInp(regCheckPass,regCheckPass.value == regPass.value, 'Пароли не совпадают')
+    ){location.href = location.href}
+})
 
+document.body.addEventListener('click', ({target}) => {
+    if (target.getAttribute('id')) {
+        if (target.getAttribute('id') != 'changeLang') {
+            setTimeout(() => {
+                langSpan.classList.remove('active')
+            }, 0)
+        }
+    }
+})
 
-function check(check, input, text, btn = logInWithLogin){
-    if (check){
-        input.style.border = '1px solid #C1C5C8'
-        input.removeAttribute('required')
+changeLang.addEventListener('click', () => {
+    langSpan.classList.toggle('active')
+})
+
+function checkInp(input, condition, textError) {
+    if (condition) {
+        input.style.border = '1px solid #51AA4D'
         input.nextElementSibling.innerHTML = ''
         input.parentElement.querySelector('.stop').style.display = 'none'
-    } else {
-        input.style.border = '1px solid #b63535'
-        input.setAttribute('required', 'required')
-        input.nextElementSibling.innerHTML = text
-        input.parentElement.querySelector('.stop').style.display = 'inline-block'
+        return true
     }
-
-    if (
-        regLoginEmail.value &&
-        regLoginPhone.value &&
-        regLogin.value &&
-        regPass.value &&
-        (regPass.value === regCheckPass.value))
-        btn.removeAttribute('disabled')
+    input.style.border = '1px solid #b63535'
+    input.nextElementSibling.innerHTML = textError
+    input.parentElement.querySelector('.stop').style.display = 'inline-block'
+    return false
 }
 
+function ShowHiddenBlock(arrShow, arrHidden) {
+    arrShow.forEach(e => {
+        e.classList.remove('hidden')
+        e.classList.add('show')
+    })
+    arrHidden.forEach(e => {
+        e.classList.remove('show')
+        e.classList.add('hidden')
+    })
+}
 
 function obs(el) {
     observer.disconnect()

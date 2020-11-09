@@ -16,7 +16,11 @@
 <div id="app" class="show">
 
     <div id="loading">
-        <img src="assets/images/loader.gif" alt="">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
     </div>
 
     <div id="oldBrowser" class="hidden">
@@ -311,12 +315,13 @@
                             </a>
                         </li>
                     </ul>
-                    <div class="main__block form_footer">
+                    <div class="main__block form_footer center">
                         <button class="btn" id="regNextBtn" disabled="disabled">Далее</button>
                     </div>
                 </div>
                 <div id="regWithLogAndPass" class="main__block hidden">
                     <form id="formRegWithLogin" class="form" name="formRegWithLogin">
+
                         <p class="field">
                             <label for="regLoginEmail">Email:</label>
                             <input type="email" id="regLoginEmail" name="reg_email" placeholder="example@mail.uz">
@@ -325,6 +330,7 @@
                                 <i class="fas fa-ban"></i>
                             </span>
                         </p>
+
                         <p class="field">
                             <label for="regLoginPhone">Телефон:</label>
                             <input type="text" id="regLoginPhone" name="reg_phone" placeholder="+998 99 999 99 99">
@@ -381,12 +387,21 @@
 
                         <p class="field">
                             <label for="regCheckPass">Подтверждение пароля:</label>
-                            <input type="password" id="regCheckPass" name="reg_check_password" disabled="disabled">
+                            <input type="password" id="regCheckPass" name="reg_check_password">
                             <span class="small-description"></span>
                             <span class="stop">
                                 <i class="fas fa-ban"></i>
                             </span>
                         </p>
+
+                        <div class="form_footer">
+                            <button id="logInWithLogin" class="btn">Зарегистрироваться</button>
+                            <p>
+                                <a href="#" id="regPrevBtn" class="usual_link">
+                                    Назад
+                                </a>
+                            </p>
+                        </div>
 
                         <div id="condition">
                             <p>Регистрируясь в системе соглашаетесь с
@@ -394,12 +409,6 @@
                             </p>
                         </div>
 
-                        <div class="form_footer">
-                            <button id="logInWithLogin" class="btn" disabled="disabled">Зарегистрироваться</button>
-                            <a href="#" id="regPrevBtn" class="usual_link">
-                                Назад
-                            </a>
-                        </div>
                     </form>
                 </div>
                 <div id="contacts" class="main__block hidden">
@@ -407,26 +416,48 @@
                         <p class="field">
                             <label for="contactsName">ФИО:</label>
                             <input id="contactsName" type="name" name="name" placeholder="Иванов Иван Иванович">
+                            <span class="small-description"></span>
+                            <span class="stop">
+                                <i class="fas fa-ban"></i>
+                            </span>
                         </p>
                         <p class="field">
                             <label for="contactsCompany">Название компании:</label>
                             <input id="contactsCompany" type="text" name="company" placeholder="OOO My Company">
+                            <span class="small-description"></span>
+                            <span class="stop">
+                                <i class="fas fa-ban"></i>
+                            </span>
                         </p>
                         <p class="field">
                             <label for="contactsPhone">Телефон:</label>
                             <input id="contactsPhone" type="text" name="phone" placeholder="+998 99 999 99 99">
+                            <span class="small-description"></span>
+                            <span class="stop">
+                                <i class="fas fa-ban"></i>
+                            </span>
                         </p>
                         <p class="field">
                             <label for="contactsEmail">E-mail:</label>
                             <input id="contactsEmail" type="email" name="email" placeholder="mycompany@domain.uz">
+                            <span class="small-description"></span>
+                            <span class="stop">
+                                <i class="fas fa-ban"></i>
+                            </span>
                         </p>
                         <p class="field">
                             <label for="contactsDescription">Сообщение:</label>
                             <textarea name="description" id="contactsDescription" cols="30" rows="10"></textarea>
+                            <span class="small-description"></span>
+                            <span class="stop">
+                                <i class="fas fa-ban"></i>
+                            </span>
                         </p>
                         <div class="form_footer">
-                            <a href="#" class="usual_link" id="backToRegWithEcp">Назад</a>
                             <button id="sendContacts" class="btn">Отправить</button>
+                            <p>
+                                <a href="#" class="usual_link" id="backToRegWithEcp">Назад</a>
+                            </p>
                         </div>
                     </form>
                 </div>
@@ -441,12 +472,16 @@
     <div id="appFooter">
         <p>
             <a class="usual_link" id="toContacts" href="#">Техническая поддержка</a>
-            <a class="usual_link" href="#">Условиями использования</a>
+            <a class="usual_link" href="#">Условия использования</a>
 
-            <span>
-                <a class="usual_link" href="#">РУС |</a>
-                <a class="usual_link" href="#">OZB |</a>
-                <a class="usual_link" href="#">УЗБ</a>
+            <span class="change_language_block show">
+                <button id="changeLang" class="usual_link">РУС</button>
+
+                <span id="langSpan">
+                    <a class="usual_link" id="lnagRu" href="#">РУС |&nbsp;</a>
+                    <a class="usual_link" id="lnagOz" href="#">OZB |&nbsp;</a>
+                    <a class="usual_link" id="lnagUz" href="#">УЗБ</a>
+                </span>
             </span>
         </p>
         <p>
@@ -469,12 +504,15 @@
     } else {
         var scriptMedia = document.createElement('script')
         var scriptClick = document.createElement('script')
+        var scriptContacts = document.createElement('script')
 
         scriptMedia.setAttribute('src', 'assets/js/reg/media.js')
         scriptClick.setAttribute('src', 'assets/js/reg/clickLogic.js')
+        scriptContacts.setAttribute('src', 'assets/js/contacts.js')
 
         document.body.insertAdjacentElement('beforeend', scriptMedia)
         document.body.insertAdjacentElement('beforeend', scriptClick)
+        document.body.insertAdjacentElement('beforeend', scriptContacts)
     }
 </script>
 </body>
