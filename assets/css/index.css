@@ -17,6 +17,7 @@
 }
 
 .usual_link {
+    text-align: center;
     font-size: 14px;
     font-weight: 400;
     text-decoration: none;
@@ -164,7 +165,7 @@ body {
 
 #notFound i{
     color: #e1b12c;
-    font-size: 30px;
+    font-size: 40px;
     margin-bottom: 10px;
 }
 
@@ -209,6 +210,14 @@ body {
     box-sizing: border-box;
     text-decoration: none;
     position: relative;
+}
+
+#keysProfile .main__link_with_ecp {
+    padding: 20px;
+}
+
+#changeProfile{
+    width: 100%;
 }
 
 .main__link_with_ecp:hover {
@@ -283,7 +292,7 @@ body {
     padding: 5px;
     color: var(--color-gray);
     position: absolute;
-    right: -200px;
+    left: 50px;
     bottom: 0;
     font-family: Roboto;
     border-radius: 3px;
@@ -481,7 +490,6 @@ body {
 }
 
 .field textarea {
-    min-width: 320px;
     max-width: 320px;
     font-size: 18px;
     font-family: Roboto;
@@ -614,6 +622,7 @@ body {
     align-items: center;
     justify-content: center;
     font-family: Roboto;
+    max-width: 380px;
 }
 
 #appFooter p {
@@ -629,7 +638,16 @@ body {
 
 #appFooter p > a{
     font-size: 12px;
-    margin-right: 15px;
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 7px;
+}
+
+#appFooter p > a:last-child{
+    justify-content: flex-start;
+    margin-left: 7px;
+    margin-right: 0;
 }
 
 .change_language_block{
@@ -678,7 +696,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 380px;
+    max-width: 380px;
+    width: 100%;
     padding: 50px;
     box-sizing: border-box;
     background: #fff;

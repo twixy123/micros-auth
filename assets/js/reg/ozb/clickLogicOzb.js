@@ -3,10 +3,11 @@ localStorage.setItem('regType', 'ECP')
 
 let observer = new MutationObserver(mutNode => {
     if (localStorage.getItem('regType') == 'Contacts'){
-        title.innerHTML = 'Техническая поддержка'
+        title.innerHTML = `Texnik yordam`
     }
-    title.innerHTML = 'Регистрация'
-    infoSignTitle.innerHTML = ''
+    title.innerHTML = `Belgilanish`
+    infoSignTitle.innerHTML = ``
+    if (localStorage.getItem('regType') == 'ECP') infoSignTitle.innerHTML = `Elektron raqamli imzoni tanlang`
     if (!infoSignTitle.innerHTML) infoSignTitle.style.padding = '0'
     obs(app)
 
@@ -66,16 +67,16 @@ ecpKey.forEach((key,idx, arr)=>{
 
 regLoginEmail.addEventListener('input', ()=>{
     let reg = /^.+@.+\..+$/i
-    checkInp(regLoginEmail, regLoginEmail.value.match(reg), 'Неккоректно заполнено поле')
+    checkInp(regLoginEmail, regLoginEmail.value.match(reg), `Email maydoni noto'g'ri kiritilgan`)
 })
 
 regLoginPhone.addEventListener('input', ()=>{
     let reg = /^((998|\+998)[\- ]?)?(\(?\d{2}\)?[\- ]?)?[\d\- ]{7,10}$/
-    checkInp(regLoginPhone, regLoginPhone.value.match(reg), 'Неккоректно заполнено поле')
+    checkInp(regLoginPhone, regLoginPhone.value.match(reg), `Email maydoni noto'g'ri kiritilgan`)
 })
 
 regLogin.addEventListener('input', ()=>{
-    checkInp(regLogin, regLogin.value.length > 4, 'Введите корректный логин')
+    checkInp(regLogin, regLogin.value.length > 4, `Yaroqli foydalanuvchi nomini kiriting`)
 })
 
 regPass.addEventListener('input', ()=>{
@@ -83,7 +84,7 @@ regPass.addEventListener('input', ()=>{
 })
 
 regCheckPass.addEventListener('input', ()=>{
-    checkInp(regCheckPass,regCheckPass.value == regPass.value, 'Пароли не совпадают')
+    checkInp(regCheckPass,regCheckPass.value == regPass.value, `Parollar mos kelmayapti`)
 })
 
 logInWithLogin.addEventListener('click', e=>{
@@ -91,16 +92,16 @@ logInWithLogin.addEventListener('click', e=>{
     const regEmail = /^.+@.+\..+$/i,
           regPhone = /^((998|\+998)[\- ]?)?(\(?\d{2}\)?[\- ]?)?[\d\- ]{7,10}$/,
           regPas = /(?=.*[A-Z])[0-9A-Z]{6,}/g
-    checkInp(regLoginEmail, regLoginEmail.value.match(regEmail), 'Неккоректно заполнено поле')
-    checkInp(regLoginPhone, regLoginPhone.value.match(regPhone), 'Неккоректно заполнено поле')
-    checkInp(regLogin, regLogin.value.length > 4, 'Введите корректный логин')
+    checkInp(regLoginEmail, regLoginEmail.value.match(regEmail), `Email maydoni noto'g'ri kiritilgan`)
+    checkInp(regLoginPhone, regLoginPhone.value.match(regPhone), `Email maydoni noto'g'ri kiritilgan`)
+    checkInp(regLogin, regLogin.value.length > 4, `Yaroqli foydalanuvchi nomini kiriting`)
     checkPassword(regPass)
     if (
-        checkInp(regLoginEmail, regLoginEmail.value.match(regEmail), 'Неккоректно заполнено поле') &&
-        checkInp(regLoginPhone, regLoginPhone.value.match(regPhone), 'Неккоректно заполнено поле') &&
-        checkInp(regLogin, regLogin.value.length > 4, 'Введите корректный логин') &&
+        checkInp(regLoginEmail, regLoginEmail.value.match(regEmail), `Email maydoni noto'g'ri kiritilgan`) &&
+        checkInp(regLoginPhone, regLoginPhone.value.match(regPhone), `Email maydoni noto'g'ri kiritilgan`) &&
+        checkInp(regLogin, regLogin.value.length > 4, `Yaroqli foydalanuvchi nomini kiriting`) &&
         checkPassword(regPass) &&
-        checkInp(regCheckPass,regCheckPass.value == regPass.value, 'Пароли не совпадают')
+        checkInp(regCheckPass,regCheckPass.value == regPass.value, `Parollar mos kelmayapti`)
     ){location.href = location.href}
 })
 
@@ -112,9 +113,9 @@ function checkPassword(input) {
     let regPasLetters = /(?=.*[A-Z])/g
     let regPasNum = /(?=.*[0-9])/g
 
-    symbols.innerHTML = 'Пароль должен быть не меньше 6 символов'
-    letters.innerHTML = 'Пароль должен содержать заглавные латинского алфавита буквы'
-    numbers.innerHTML = 'Пароль должен содержать цифры'
+    symbols.innerHTML = `Parol kamida 6 ta belgidan iborat bo'lishi kerak`
+    letters.innerHTML = `Parolda katta lotin harflari bo'lishi kerak`
+    numbers.innerHTML = `Parolda raqamlar bo'lishi kerak`
     symbols.style = 'color: #b63535; padding: 5px 0;'
     letters.style = 'color: #b63535; padding: 5px 0;'
     numbers.style = 'color: #b63535; padding: 5px 0;'

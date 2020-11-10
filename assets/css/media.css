@@ -1,3 +1,17 @@
-@media(max-width: 800px){
-
+@media (max-width: 805px) {
+    .ecp_info__text {
+        left: auto;
+        right: -20px;
+        bottom: -55px;
+    }
+    .ecp_info__text::before{
+        top: -7px;
+        left: 86%;
+        transform: rotate(7deg);
+    }
+}
+@media (max-width: 640px) {
+    #app{
+        padding: 30px 0;
+    }
 }

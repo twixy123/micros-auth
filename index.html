@@ -10,14 +10,15 @@
     <meta name="copyright" content="Micros.uz">
     <meta name="content-language" content="ru">
     <meta name="robots" content="all">
-    <meta property="og:title" content="Вход в систему | Micros24" />
-    <meta property="og:type" content="Система эллектронного подписания MICROS24" />
-    <meta property="og:url" content="https://micros24.uz/" />
-    <meta property="og:image" content="./assets/images/logo_micros24.jpg" />
+    <meta property="og:title" content="Вход в систему | Micros24"/>
+    <meta property="og:type" content="Система эллектронного подписания MICROS24"/>
+    <meta property="og:url" content="https://micros24.uz/"/>
+    <meta property="og:image" content="./assets/images/logo_micros24.jpg"/>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/fonts/fonawesome/all.min.css">
     <link rel="stylesheet" href="assets/fonts/roboto/roboto.css">
     <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/media.css">
     <title>Вход в систему | Micros24</title>
 </head>
 <body>
@@ -249,7 +250,7 @@
                     </div>
                     <ul id="keysAuth" class="main__menu_with_ecp show">
                         <li class="main__list_with_ecp">
-                            <a href="#" class="main__link_with_ecp">
+                            <a href="#" class="main__link_with_ecp ecp__keys">
                                 <span class="logo">
                                   <i class="far fa-building"></i>
                                 </span>
@@ -268,7 +269,7 @@
                             </a>
                         </li>
                         <li class="main__list_with_ecp">
-                            <a href="#" class="main__link_with_ecp">
+                            <a href="#" class="main__link_with_ecp ecp__keys">
                                 <span class="logo">
                                   <i class="far fa-building"></i>
                                 </span>
@@ -287,7 +288,7 @@
                             </a>
                         </li>
                         <li class="main__list_with_ecp">
-                            <a href="#" class="main__link_with_ecp">
+                            <a href="#" class="main__link_with_ecp ecp__keys">
                                 <span class="logo">
                                   <i class="far fa-building"></i>
                                 </span>
@@ -306,7 +307,7 @@
                             </a>
                         </li>
                         <li class="main__list_with_ecp">
-                            <a href="#" class="main__link_with_ecp">
+                            <a href="#" class="main__link_with_ecp ecp__keys">
                                 <span class="logo">
                                   <i class="far fa-user-circle"></i>
                                 </span>
@@ -352,6 +353,54 @@
                             </a>
                         </div>
                     </form>
+                </div>
+                <div id="changeProfile" class="hidden">
+                    <ul id="keysProfile" class="main__menu_with_ecp show">
+                        <li class="main__list_with_ecp">
+                            <a href="#" class="main__link_with_ecp profile__keys">
+                                <span class="logo">
+                                  <i class="far fa-building"></i>
+                                </span>
+                                <span class="details">
+                                  <span class="ecp_name">ASPEKT OILAVIY KORXONA</span>
+                                  <span>302654054</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="main__list_with_ecp">
+                            <a href="#" class="main__link_with_ecp profile__keys">
+                                <span class="logo">
+                                  <i class="far fa-building"></i>
+                                </span>
+                                <span class="details">
+                                  <span class="ecp_name">MICROS DEVELOPMENT XK</span>
+                                  <span>302738051</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="main__list_with_ecp">
+                            <a href="#" class="main__link_with_ecp profile__keys">
+                                <span class="logo">
+                                  <i class="far fa-building"></i>
+                                </span>
+                                <span class="details">
+                                  <span class="ecp_name">SIMPLE GAMES MCHJ</span>
+                                  <span>305015214</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="main__list_with_ecp">
+                            <a href="#" class="main__link_with_ecp profile__keys">
+                                <span class="logo">
+                                  <i class="far fa-user-circle"></i>
+                                </span>
+                                <span class="details">
+                                  <span class="ecp_name">ВЕКСЛЕР ВИКТОР АЛЕКСАНДРОВИЧ</span>
+                                  <span class="ecp_tin">487007226</span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
                 <div id="frgtPass" class="main__block hidden">
                     <form id="formForgotPass" class="form" name="formLogInWithLogin">
@@ -486,15 +535,13 @@
         <p>
             <a class="usual_link" id="toContacts" href="#">Техническая поддержка</a>
             <a class="usual_link" href="#">Условия использования</a>
-
-
         </p>
         <p>
             ©2013-2020 ЧП "Micros Development". Все права защищены.
         </p>
         <p>
-            <a class="usual_link" href="#">O'zbek tilida</a>
-            <a class="usual_link" href="#">Ўзбек тилида</a>
+            <a class="usual_link" id="toOzb" href="index-oz.html">O'zbek tilida</a>
+            <a class="usual_link" id="toUzb" href="#">Ўзбек тилида</a>
         </p>
     </div>
 </div>
@@ -516,8 +563,8 @@
         var scriptContacts = document.createElement('script')
 
         scriptMedia.setAttribute('src', 'assets/js/auth/media.js')
-        scriptClick.setAttribute('src', 'assets/js/auth/clickLogic.js')
-        scriptContacts.setAttribute('src', 'assets/js/contacts.js')
+        scriptClick.setAttribute('src', 'assets/js/auth/rus/clickLogic.js')
+        scriptContacts.setAttribute('src', 'assets/js/contacts/contacts.js')
 
         document.body.insertAdjacentElement('beforeend', scriptMedia)
         document.body.insertAdjacentElement('beforeend', scriptClick)

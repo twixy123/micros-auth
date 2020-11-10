@@ -13,6 +13,12 @@ let observer = new MutationObserver(mutNode => {
             'Авторизоваться с помощью логина и пароля',
             'Войти при помощи ключа ЭЦП'
         )
+    } else if (localStorage.getItem('authType') == 'ChangeProfile') {
+        changeTitle(
+            'Выбор профиля',
+            'Пожалуйста, выберите профиль под которым хотите авторизоваться в системе',
+            'Войти при помощи ключа ЭЦП'
+        )
     } else if (localStorage.getItem('authType') == 'ForgotPassword') {
         changeTitle(
             'Вход в систему',
@@ -49,43 +55,65 @@ otherMethod.addEventListener('click', e => {
             [signInWithLogAndPass]
         )
         return
-    } else if (localStorage.getItem('authType') == 'ECP') {
+    }
+    if (localStorage.getItem('authType') == 'ECP') {
+        localStorage.setItem('authType', 'Login')
         ShowHiddenBlock(
             [signInWithLogAndPass],
             [signInWithECP]
         )
-    } else if (localStorage.getItem('authType') == 'ForgotPassword') {
+    }
+    if (localStorage.getItem('authType') == 'ChangeProfile') {
+        localStorage.setItem('authType', 'ECP')
+        ShowHiddenBlock(
+            [signInWithECP],
+            [changeProfile]
+        )
+    }
+    if (localStorage.getItem('authType') == 'ForgotPassword') {
+        localStorage.setItem('authType', 'Login')
         ShowHiddenBlock(
             [signInWithLogAndPass],
             [frgtPass]
         )
-    } else if (localStorage.getItem('authType') == 'Contacts') {
+    }
+    if (localStorage.getItem('authType') == 'Contacts') {
+        localStorage.setItem('authType', 'Login')
         ShowHiddenBlock(
             [signInWithLogAndPass],
             [contacts]
         )
-    } else if (localStorage.getItem('authType') == 'ForgotPassword') {
+    }
+    if (localStorage.getItem('authType') == 'ForgotPassword') {
+        localStorage.setItem('authType', 'Login')
         ShowHiddenBlock(
             [signInWithLogAndPass],
             [frgtPass]
         )
-    } else if (localStorage.getItem('authType') == 'ToMailSended') {
+    }
+    if (localStorage.getItem('authType') == 'ToMailSended') {
+        localStorage.setItem('authType', 'Login')
         ShowHiddenBlock(
             [signInWithLogAndPass, document.querySelector('.or_block')],
             [checkYourEmail]
         )
         forgotEmailInp.style.border = `1px solid #C1C5C8`
     }
-    localStorage.setItem('authType', 'Login')
 })
 
 logInWithLogin.addEventListener('click', e=>{
     e.preventDefault()
+    checkInp(loginName, loginName.value.length > 3, 'Введите корректное имя')
+    checkInp(loginPass, loginPass.value.length > 5, 'Пароль должен быть не меньше 6 символов')
     if (
-        checkInp(loginName, loginName.value, 'Введите имя') &&
+        checkInp(loginName, loginName.value.length > 3, 'Введите корректное имя') &&
         checkInp(loginPass, loginPass.value.length > 5, 'Пароль должен быть не меньше 6 символов')
     ){
-        location.href = location.href
+        localStorage.setItem('authType', 'ChangeProfile')
+        ShowHiddenBlock(
+            [changeProfile],
+            [signInWithLogAndPass]
+        )
     }
 })
 
@@ -131,7 +159,7 @@ backToAuthLogin.addEventListener('click', e => {
 })
 
 loginName.addEventListener('input', () => {
-    checkInp(loginName, loginName.value, 'Введите имя')
+    checkInp(loginName, loginName.value.length > 3, 'Введите корректное имя')
 })
 
 loginPass.addEventListener('input', () => {
