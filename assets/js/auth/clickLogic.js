@@ -142,20 +142,6 @@ forgotEmailInp.addEventListener('input', ()=>{
     let reg = /^.+@.+\..+$/i
     checkInp(forgotEmailInp, forgotEmailInp.value.match(reg), 'Неккоректно введено поле Email')
 })
-
-document.body.addEventListener('click', ({target}) => {
-    if (target.getAttribute('id')) {
-        if (target.getAttribute('id') != 'changeLang') {
-            setTimeout(() => {
-                langSpan.classList.remove('active')
-            }, 0)
-        }
-    }
-})
-
-changeLang.addEventListener('click', () => {
-    langSpan.classList.toggle('active')
-})
 //ниже код для смены пароля
 changePassword.addEventListener('click', e => {
     e.preventDefault()

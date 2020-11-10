@@ -104,20 +104,6 @@ logInWithLogin.addEventListener('click', e=>{
     ){location.href = location.href}
 })
 
-document.body.addEventListener('click', ({target}) => {
-    if (target.getAttribute('id')) {
-        if (target.getAttribute('id') != 'changeLang') {
-            setTimeout(() => {
-                langSpan.classList.remove('active')
-            }, 0)
-        }
-    }
-})
-
-changeLang.addEventListener('click', () => {
-    langSpan.classList.toggle('active')
-})
-
 function checkPassword(input) {
     let symbols = document.getElementById('symbols6')
     let letters = document.getElementById('letters')
