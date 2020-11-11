@@ -17,6 +17,7 @@ regNextBtn.addEventListener('click', e => {
     e.preventDefault()
     localStorage.setItem('regType', 'Login')
     ShowHiddenBlock([regWithLogAndPass],[regWithECP])
+    scroll(0, 50)
 })
 
 regPrevBtn.addEventListener('click', e => {
@@ -80,7 +81,8 @@ regLogin.addEventListener('input', ()=>{
 })
 
 regPass.addEventListener('input', ()=>{
-    checkPassword(regPass)
+    checkInp(regPass, regPass.value.length > 5, `Parol kamida 6 ta belgidan iborat bo'lishi kerak`)
+    // checkPassword(regPass)
 })
 
 regCheckPass.addEventListener('input', ()=>{
@@ -95,17 +97,23 @@ logInWithLogin.addEventListener('click', e=>{
     checkInp(regLoginEmail, regLoginEmail.value.match(regEmail), `Email maydoni noto'g'ri kiritilgan`)
     checkInp(regLoginPhone, regLoginPhone.value.match(regPhone), `Email maydoni noto'g'ri kiritilgan`)
     checkInp(regLogin, regLogin.value.length > 4, `Yaroqli foydalanuvchi nomini kiriting`)
-    checkPassword(regPass)
+    checkInp(regPass, regPass.value.length > 5, `Parol kamida 6 ta belgidan iborat bo'lishi kerak`)
+    checkInp(regCheckPass,
+        (regCheckPass.value == regPass.value && regCheckPass.value.length > 5),
+        `Parollar mos kelmayapti`)
+    // checkPassword(regPass)
     if (
         checkInp(regLoginEmail, regLoginEmail.value.match(regEmail), `Email maydoni noto'g'ri kiritilgan`) &&
         checkInp(regLoginPhone, regLoginPhone.value.match(regPhone), `Email maydoni noto'g'ri kiritilgan`) &&
         checkInp(regLogin, regLogin.value.length > 4, `Yaroqli foydalanuvchi nomini kiriting`) &&
-        checkPassword(regPass) &&
-        checkInp(regCheckPass,regCheckPass.value == regPass.value, `Parollar mos kelmayapti`)
+        checkInp(regPass, regPass.value.length > 5, `Parol kamida 6 ta belgidan iborat bo'lishi kerak`) &&
+        checkInp(regCheckPass,
+            (regCheckPass.value == regPass.value && regCheckPass.value.length > 5),
+            `Parollar mos kelmayapti`)
     ){location.href = location.href}
 })
 
-function checkPassword(input) {
+/*function checkPassword(input) {
     let symbols = document.getElementById('symbols6')
     let letters = document.getElementById('letters')
     let numbers = document.getElementById('numbers')
@@ -142,7 +150,7 @@ function checkPassword(input) {
         return true
     }
     return false
-}
+}*/
 
 function checkInp(input, condition, textError) {
     if (condition) {

@@ -568,10 +568,12 @@ body {
 }
 
 .btn[disabled=disabled]{
-    background: var(--color-disabled);
+    background: var(--color-border-gray);
+    border: 1px solid var(--color-border-gray);
 }
 .btn[disabled=disabled]:hover{
-    background: var(--color-disabled);
+    background: var(--color-border-gray);
+    border: 1px solid var(--color-border-gray);
 }
 
 .btn:active {
