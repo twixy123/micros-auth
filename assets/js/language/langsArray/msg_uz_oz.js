@@ -58,6 +58,10 @@ const msg = {
     notMatchPasswords: 'Parollar mos kelmayapti',
     enterOrganization: 'Kompaniyangiz nomini kiriting',
     incorrectPhone: 'Telefon maydonida noto\'g\'ri to\'ldirilgan',
+    lastTimeOnline: 'Oxirgi marta onlayn ',
+    chooseUser: 'Foydalanuvchini tanlang',
+    changeUser: 'Boshqa foydalanuvchi tomonidan kiring',
+    choiseUser: 'Foydalanuvchi tanlandi',
 }
 
 if (location.href.includes('registration.')) include('./assets/js/reg/chengeLang.js')

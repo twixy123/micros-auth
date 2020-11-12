@@ -67,6 +67,7 @@ toUzb.addEventListener('click', e => {
     localStorage.setItem('lang', 'uz-uz')
     location.reload()
 })
+
 otherMethod.addEventListener('click', e => {
     e.preventDefault()
     if (localStorage.getItem('authType') == 'Login') {
@@ -129,7 +130,7 @@ nextBtnToAuthPassword.addEventListener('click', e => {
     if (authSignInLogin.getAttribute('data-use') == 'key') {
         let check = false,
             name = ''
-        notCheckedUser.innerHTML = 'Выберите пользвателя'
+        notCheckedUser.innerHTML = msg.chooseUser
         document.querySelectorAll('.userKeyLogin').forEach(e => {
             if (e.parentElement.querySelector('.authUserCheck').value == 'checked') {
                 name = e.querySelector('.userName').innerHTML

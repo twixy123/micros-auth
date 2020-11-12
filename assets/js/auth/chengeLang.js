@@ -42,7 +42,7 @@ const idElemsToChangeText = [
         text: msg.enterEmail
     },
     {
-        tagId: [forgotPass, changePassword],
+        tagId: [forgotPass, changePassword, nextBtnToAuthPassword],
         text: msg.further
     },
     {
@@ -124,6 +124,14 @@ const idElemsToChangeText = [
     {
         tagId: [license],
         text: msg.license
+    },
+    {
+        tagId: [otherUser],
+        text: msg.changeUser
+    },
+    {
+        tagId: [textChooseUser],
+        text: msg.choiseUser + ':'
     },
 ]
 

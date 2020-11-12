@@ -58,6 +58,10 @@ const msg = {
     notMatchPasswords: 'Пароли не совпадают',
     enterOrganization: 'Введите название компании',
     incorrectPhone: 'Неккоректно заполнено поле Телефон',
+    lastTimeOnline: 'Последний раз в сети ',
+    chooseUser: 'Выберите пользвателя',
+    changeUser: 'Авторизоваться другим пользователем',
+    choiseUser: 'Выбран пользователь',
 }
 
 if (location.href.includes('registration.')) include('assets/js/reg/chengeLang.js')

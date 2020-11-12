@@ -67,7 +67,7 @@ function renderUserLogin(){
                         </span>
                         <span class="details userDetail">
                             <span class="userName">${userGet.login}</span>
-                            <span>Последний раз в сети <span class="userDateLast">${userGet.date}</span></span>
+                            <span>${msg.lastTimeOnline}<span class="userDateLast">${userGet.date}</span></span>
                         </span>
                     </a>
                 </li>
