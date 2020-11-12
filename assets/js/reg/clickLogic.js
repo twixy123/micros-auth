@@ -1,25 +1,37 @@
 const app = document.getElementById('app')
 localStorage.setItem('regType', 'ECP')
-
+toOzb.addEventListener('click', e => {
+    e.preventDefault()
+    localStorage.setItem('lang', 'uz-oz')
+    location.href = location.href
+})
+toRus.addEventListener('click', e => {
+    e.preventDefault()
+    localStorage.setItem('lang', 'ru-ru')
+    location.href = location.href
+})
+toUzb.addEventListener('click', e => {
+    e.preventDefault()
+    localStorage.setItem('lang', 'uz-uz')
+    location.href = location.href
+})
 let observer = new MutationObserver(mutNode => {
     if (localStorage.getItem('regType') == 'Contacts') {
-        title.innerHTML = 'Техническая поддержка'
+        title.innerHTML = msg.technical_support
     }
-    title.innerHTML = 'Регистрация'
+    title.innerHTML = msg.registration
     infoSignTitle.innerHTML = ''
-    if (localStorage.getItem('regType') == 'ECP') infoSignTitle.innerHTML = 'Выберите электронную цифровую подпись'
+    if (localStorage.getItem('regType') == 'ECP') infoSignTitle.innerHTML = msg.choiseECPSignature
     if (!infoSignTitle.innerHTML) infoSignTitle.style.padding = '0'
     obs(app)
 
 })
-
 regNextBtn.addEventListener('click', e => {
     e.preventDefault()
     localStorage.setItem('regType', 'Login')
     ShowHiddenBlock([regWithLogAndPass], [regWithECP])
     scroll(0, 50)
 })
-
 regPrevBtn.addEventListener('click', e => {
     e.preventDefault()
     localStorage.setItem('regType', 'ECP')
@@ -36,18 +48,15 @@ regPrevBtn.addEventListener('click', e => {
         else inp.value = ''
     })
 })
-
 toContacts.addEventListener('click', e => {
     e.preventDefault()
     localStorage.setItem('regType', 'Contacts')
     ShowHiddenBlock([contacts], [regWithECP, regWithLogAndPass])
 })
-
 backToRegWithEcp.addEventListener('click', e => {
     e.preventDefault()
     ShowHiddenBlock([regWithECP], [contacts])
 })
-
 const ecpKey = document.querySelectorAll('.main__link_with_ecp')
 ecpKey.forEach((key, idx, arr) => {
     key.addEventListener('click', e => {
@@ -69,53 +78,48 @@ ecpKey.forEach((key, idx, arr) => {
         regLoginTin.value = ecpTin.innerHTML
     })
 })
-
 regLoginEmail.addEventListener('input', () => {
     let reg = /^.+@.+\..+$/i
-    checkInp(regLoginEmail, regLoginEmail.value.match(reg), 'Неккоректно заполнено поле')
+    checkInp(regLoginEmail, regLoginEmail.value.match(reg), msg.incorrectEmail)
 })
-
 regLoginPhone.addEventListener('input', () => {
     let reg = /^(998|\+998)([\- ]?)(\(?\d{2}\)?[\- ]?)[\d\- ]{7}$/
     checkInp(
         regLoginPhone,
         regLoginPhone.value.match(reg),
-        'Неккоректно заполнено поле')
+        msg.incorrectPhone)
 })
 regLogin.addEventListener('input', () => {
-    checkInp(regLogin, regLogin.value.length > 4, 'Введите корректный логин')
+    checkInp(regLogin, regLogin.value.length > 4, msg.enterValidLogin)
 })
-
 regPass.addEventListener('input', () => {
-    checkInp(regPass, regPass.value.length > 5, 'Пароль должен быть не меньше 6 символов')
+    checkInp(regPass, regPass.value.length > 5, msg.smallPassword)
     // checkPassword(regPass)
 })
-
 regCheckPass.addEventListener('input', () => {
-    checkInp(regCheckPass, regCheckPass.value == regPass.value, 'Пароли не совпадают')
+    checkInp(regCheckPass, regCheckPass.value == regPass.value, msg.notMatchPasswords)
 })
-
 logInWithLogin.addEventListener('click', e => {
     e.preventDefault()
     const regEmail = /^.+@.+\..+$/i,
         regPhone = /(998|\+998)([\- ]?)(\(?\d{2}\)?[\- ]?)[\d\- ]{6}/,
         regPas = /(?=.*[0-9A-Z]){6,}/g
-    checkInp(regLoginEmail, regLoginEmail.value.match(regEmail), 'Неккоректно заполнено поле')
-    checkInp(regLoginPhone, regLoginPhone.value.match(regPhone), 'Неккоректно заполнено поле')
-    checkInp(regLogin, regLogin.value.length > 4, 'Введите корректный логин')
-    checkInp(regPass, regPass.value.length > 5, 'Пароль должен быть не меньше 6 символов')
+    checkInp(regLoginEmail, regLoginEmail.value.match(regEmail), msg.incorrectEmail)
+    checkInp(regLoginPhone, regLoginPhone.value.match(regPhone), msg.incorrectPhone)
+    checkInp(regLogin, regLogin.value.length > 4, msg.enterValidLogin)
+    checkInp(regPass, regPass.value.length > 5, msg.smallPassword)
     checkInp(regCheckPass,
         (regCheckPass.value == regPass.value && regCheckPass.value.length > 5),
-        'Пароли не совпадают')
+        msg.notMatchPasswords)
     // checkPassword(regPass)
     if (
-        checkInp(regLoginEmail, regLoginEmail.value.match(regEmail), 'Неккоректно заполнено поле') &&
-        checkInp(regLoginPhone, regLoginPhone.value.match(regPhone), 'Неккоректно заполнено поле') &&
-        checkInp(regLogin, regLogin.value.length > 4, 'Введите корректный логин') &&
-        checkInp(regPass, regPass.value.length > 5, 'Пароль должен быть не меньше 6 символов') &&
+        checkInp(regLoginEmail, regLoginEmail.value.match(regEmail), msg.incorrectEmail) &&
+        checkInp(regLoginPhone, regLoginPhone.value.match(regPhone), msg.incorrectEmail) &&
+        checkInp(regLogin, regLogin.value.length > 4, msg.enterValidLogin) &&
+        checkInp(regPass, regPass.value.length > 5, msg.smallPassword) &&
         checkInp(regCheckPass,
             (regCheckPass.value == regPass.value && regCheckPass.value.length > 5),
-            'Пароли не совпадают')
+            msg.notMatchPasswords)
     ) {
         location.href = location.href
     }
@@ -129,7 +133,7 @@ function checkPassword(input) {
     let regPasLetters = /(?=.*[A-Z])/g
     let regPasNum = /(?=.*[0-9])/g
 
-    symbols.innerHTML = 'Пароль должен быть не меньше 6 символов'
+    symbols.innerHTML = msg.smallPassword'
     letters.innerHTML = 'Пароль должен содержать заглавные латинского алфавита буквы'
     numbers.innerHTML = 'Пароль должен содержать цифры'
     symbols.style = 'color: #b63535; padding: 5px 0;'
@@ -159,7 +163,6 @@ function checkPassword(input) {
     }
     return false
 }*/
-
 function checkInp(input, condition, textError) {
     if (condition) {
         input.style.border = '1px solid #51AA4D'
@@ -172,7 +175,6 @@ function checkInp(input, condition, textError) {
     input.parentElement.querySelector('.stop').style.display = 'inline-block'
     return false
 }
-
 function ShowHiddenBlock(arrShow, arrHidden) {
     arrShow.forEach(e => {
         e.classList.remove('hidden')
@@ -183,7 +185,6 @@ function ShowHiddenBlock(arrShow, arrHidden) {
         e.classList.add('hidden')
     })
 }
-
 function obs(el) {
     observer.disconnect()
     observer.observe(el, {
@@ -192,5 +193,4 @@ function obs(el) {
         attributeFilter: ['class']
     })
 }
-
 obs(app)

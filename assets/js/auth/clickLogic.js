@@ -1,51 +1,64 @@
 const app = document.getElementById('app')
 localStorage.setItem('authType', 'ECP')
-
 let observer = new MutationObserver(mutNode => {
     if (localStorage.getItem('authType') == 'ECP') {
         changeTitle(
-            'Вход в систему',
-            'Авторизоваться с помощью электронной цифровой подписи выданной государственным налоговым комитетом'
+            msg.enterInSystem,
+            msg.autirizationWithEcp
         )
     } else if (localStorage.getItem('authType') == 'Login') {
         changeTitle(
-            'Вход в систему',
-            'Авторизоваться с помощью логина и пароля',
-            'Войти при помощи ключа ЭЦП'
+            msg.enterInSystem,
+            msg.autirizationWithLoginAndPassword,
+            msg.enterWithECPKey
         )
     } else if (localStorage.getItem('authType') == 'ChangeProfile') {
         changeTitle(
-            'Выбор профиля',
-            'Пожалуйста, выберите профиль под которым хотите авторизоваться в системе',
-            'Войти при помощи ключа ЭЦП'
+            msg.choiseProfile,
+            msg.pleaseChoiseProfileToAuthorized,
+            msg.enterWithECPKey
         )
     } else if (localStorage.getItem('authType') == 'ForgotPassword') {
         changeTitle(
-            'Вход в систему',
-            'Забыли пароль'
+            msg.enterInSystem,
+            msg.forgotPassword
         )
     } else if (localStorage.getItem('authType') == 'Contacts') {
         changeTitle(
-            'Техническая поддержка'
+            msg.technical_support
         )
     } else if (localStorage.getItem('authType') == 'ForgotPassword') {
         changeTitle(
-            'Забыли пароль?'
+            msg.forgotPassword + '?'
         )
     } else if (localStorage.getItem('authType') == 'ToMailSended') {
         changeTitle(
-            'Проверьте почту'
+            msg.checkMail
         )
     } else if (localStorage.getItem('authType') == 'SendToMail') {
         changeTitle(
-            'Сменить пароль'
+            msg.changePassword
         )
     }
     if (!infoSignTitle.innerHTML) infoSignTitle.style.padding = '0'
     else infoSignTitle.style.padding = '15px 30px 0'
     obs(app)
 })
-
+toOzb.addEventListener('click', e => {
+    e.preventDefault()
+    localStorage.setItem('lang', 'uz-oz')
+    location.href = location.href
+})
+toRus.addEventListener('click', e => {
+    e.preventDefault()
+    localStorage.setItem('lang', 'ru-ru')
+    location.href = location.href
+})
+toUzb.addEventListener('click', e => {
+    e.preventDefault()
+    localStorage.setItem('lang', 'uz-uz')
+    location.href = location.href
+})
 otherMethod.addEventListener('click', e => {
     e.preventDefault()
     if (localStorage.getItem('authType') == 'Login') {
@@ -91,15 +104,14 @@ otherMethod.addEventListener('click', e => {
     }
     localStorage.setItem('authType', 'Login')
 })
-
-logInWithLogin.addEventListener('click', e=>{
+logInWithLogin.addEventListener('click', e => {
     e.preventDefault()
-    checkInp(loginName, loginName.value.length > 3, 'Введите корректное имя')
-    checkInp(loginPass, loginPass.value.length > 5, 'Пароль должен быть не меньше 6 символов')
+    checkInp(loginName, loginName.value.length > 3, msg.enterValidName)
+    checkInp(loginPass, loginPass.value.length > 5, msg.smallPassword)
     if (
-        checkInp(loginName, loginName.value.length > 3, 'Введите корректное имя') &&
-        checkInp(loginPass, loginPass.value.length > 5, 'Пароль должен быть не меньше 6 символов')
-    ){
+        checkInp(loginName, loginName.value.length > 3, msg.enterValidName) &&
+        checkInp(loginPass, loginPass.value.length > 5, msg.smallPassword)
+    ) {
         localStorage.setItem('authType', 'ChangeProfile')
         ShowHiddenBlock(
             [changeProfile],
@@ -107,7 +119,6 @@ logInWithLogin.addEventListener('click', e=>{
         )
     }
 })
-
 forgotPassword.addEventListener('click', e => {
     e.preventDefault()
     localStorage.setItem('authType', 'ForgotPassword')
@@ -116,12 +127,11 @@ forgotPassword.addEventListener('click', e => {
         [signInWithLogAndPass]
     )
 })
-
 forgotPass.addEventListener('click', e => {
     e.preventDefault()
     let inp = forgotEmailInp.value,
         reg = /^.+@.+\..+$/i
-    if (checkInp(forgotEmailInp, forgotEmailInp.value.match(reg), 'Неккоректно введено поле Email')) {
+    if (checkInp(forgotEmailInp, forgotEmailInp.value.match(reg), msg.incorrectEmail)) {
         forgotEmailInp.value = ''
         localStorage.setItem('authType', 'ToMailSended')
         ShowHiddenBlock(
@@ -130,7 +140,6 @@ forgotPass.addEventListener('click', e => {
         )
     }
 })
-
 toContacts.addEventListener('click', e => {
     e.preventDefault()
     localStorage.setItem('authType', 'Contacts')
@@ -139,7 +148,6 @@ toContacts.addEventListener('click', e => {
         [signInWithECP, signInWithLogAndPass, frgtPass]
     )
 })
-
 backToAuthLogin.addEventListener('click', e => {
     e.preventDefault()
     localStorage.setItem('authType', 'Login')
@@ -148,27 +156,24 @@ backToAuthLogin.addEventListener('click', e => {
         [frgtPass]
     )
 })
-
 loginName.addEventListener('input', () => {
-    checkInp(loginName, loginName.value.length > 3, 'Введите корректное имя')
+    checkInp(loginName, loginName.value.length > 3, msg.enterValidName)
 })
-
 loginPass.addEventListener('input', () => {
-    checkInp(loginPass, loginPass.value.length > 5, 'Пароль должен быть не меньше 6 символов')
+    checkInp(loginPass, loginPass.value.length > 5, msg.smallPassword)
 })
-
-forgotEmailInp.addEventListener('input', ()=>{
+forgotEmailInp.addEventListener('input', () => {
     let reg = /^.+@.+\..+$/i
-    checkInp(forgotEmailInp, forgotEmailInp.value.match(reg), 'Неккоректно введено поле Email')
+    checkInp(forgotEmailInp, forgotEmailInp.value.match(reg), msg.incorrectEmail)
 })
 //ниже код для смены пароля
 changePassword.addEventListener('click', e => {
     e.preventDefault()
     let inp = trueEmail.value
     if (
-        checkInp(newPassword, newPassword.value.length > 5, 'Пароль далжен быть не меньше 6 символов') &&
-        checkInp(checkNewPassword, checkNewPassword.value === newPassword.value, 'Пароли не совпадают')
-    ){
+        checkInp(newPassword, newPassword.value.length > 5, msg.smallPassword) &&
+        checkInp(checkNewPassword, checkNewPassword.value === newPassword.value, msg.notMatchPasswords)
+    ) {
         localStorage.setItem('authType', 'ToMailSended')
         newPassword.value = ''
         checkNewPassword.value = ''
@@ -180,20 +185,19 @@ changePassword.addEventListener('click', e => {
         )
     }
 })
-
 newPassword.addEventListener('input', () => {
-    checkInp(newPassword, newPassword.value.length > 5, 'Пароль должен быть не меньше 6 символов')
+    checkInp(newPassword, newPassword.value.length > 5, msg.smallPassword)
 })
 
 checkNewPassword.addEventListener('input', () => {
-    checkInp(checkNewPassword, checkNewPassword.value === newPassword.value, 'Пароли не совпадают')
+    checkInp(checkNewPassword, checkNewPassword.value === newPassword.value, msg.notMatchPasswords)
 })
+
 //выше код для смены пароля
-function changeTitle(titleText, infoSignText = '', otherText = 'Войти при помощи логина и пароля') {
+function changeTitle(titleText, infoSignText = '', otherText = msg.enterWithLoginAndPassword) {
     const title = document.getElementById('title'),
         infoSignTitle = document.getElementById('infoSignTitle'),
         otherMethod = document.getElementById('otherMethod')
-
     title.innerHTML = titleText
     infoSignTitle.innerHTML = infoSignText
     otherMethod.innerHTML = otherText

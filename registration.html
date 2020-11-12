@@ -59,8 +59,8 @@
                     </g></svg>
             </a>
         </p>
-        <p>Вы используете старую версию браузера.</p>
-        <p>Обновите ваш браузер.</p>
+        <p id="youUseOldVersion">Вы используете старую версию браузера.</p>
+        <p id="refreshBrowser">Обновите ваш браузер.</p>
         <p class="download__browser_links">
             <span>
                 <a href="https://www.google.com/intl/ru/chrome/" target="_blank">
@@ -243,9 +243,9 @@
                 <div id="regWithECP" class="main__block hidden">
                     <div id="notFound" class="hidden">
                         <i class="fas fa-exclamation-circle"></i>
-                        <p>
+                        <p id="dontHaveProgram">
                             У вас не установлена программа E-IMZO
-                            <a class="usual_link" href="https://e-imzo.uz/" target="_blank">Скачать</a>
+                            <a class="usual_link" href="https://e-imzo.uz/" target="_blank" id="downloadEIMZO">Скачать</a>
                         </p>
                     </div>
                     <ul id="keysAuth" class="main__menu_with_ecp show">
@@ -262,8 +262,8 @@
                                 <span class="ecp_info">
                                   <i class="fas fa-info-circle"></i>
                                   <span class="ecp_info__text">
-                                    Срок действия сертификата: <br>
-                                    15.07.2019 - 15.07.2021
+                                      <span class="validate_ECP">Срок действия сертификата:</span>
+                                      <span class="validate_date_ECP">15.07.2019 - 15.07.2021</span>
                                   </span>
                                 </span>
                             </a>
@@ -281,8 +281,8 @@
                                 <span class="ecp_info">
                                   <i class="fas fa-info-circle"></i>
                                   <span class="ecp_info__text">
-                                    Срок действия сертификата: <br>
-                                    09.11.2018 - 09.11.2020
+                                      <span class="validate_ECP">Срок действия сертификата:</span>
+                                      <span class="validate_date_ECP">09.11.2018 - 09.11.2020</span>
                                   </span>
                                 </span>
                             </a>
@@ -300,8 +300,8 @@
                                 <span class="ecp_info">
                                   <i class="fas fa-info-circle"></i>
                                   <span class="ecp_info__text">
-                                    Срок действия сертификата: <br>
-                                    30.11.2019 - 20.11.2021
+                                      <span class="validate_ECP">Срок действия сертификата:</span>
+                                      <span class="validate_date_ECP">30.11.2019 - 20.11.2021</span>
                                   </span>
                                 </span>
                             </a>
@@ -319,8 +319,8 @@
                                   <i class="fas fa-info-circle"></i>
 
                                   <span class="ecp_info__text">
-                                    Срок действия сертификата: <br>
-                                    21.07.2020 - 21.07.2022
+                                      <span class="validate_ECP">Срок действия сертификата:</span>
+                                      <span class="validate_date_ECP">21.07.2020 - 21.07.2022</span>
                                   </span>
                                 </span>
                             </a>
@@ -391,8 +391,6 @@
                             <label for="regPass">Пароль:</label>
                             <input type="password" id="regPass" name="reg_password">
                             <span class="small-description" id="symbols6"></span>
-                            <span class="small-description" id="letters"></span>
-                            <span class="small-description" id="numbers"></span>
                             <span class="stop">
                                 <i class="fas fa-ban"></i>
                             </span>
@@ -415,10 +413,11 @@
                         </div>
 
                         <div id="condition">
-                            <p>Входя в систему вы соглашаетесь с <a href="#" target="_blank" class="usual_link">Условиями
-                                использования</a>, а так же вы можете свободно выбрать
-                                <a href="https://rouming.uz/ru/operators" target="_blank" class="usual_link">Оператора
-                                    ЭСФ</a>
+                            <p>
+                                <span id="spCond1">Входя в систему вы соглашаетесь с </span>
+                                <a href="#" target="_blank" class="usual_link" id="termOfUseInApp">Условиями использования</a>
+                                <span id="spCond2">, а так же вы можете свободно выбрать</span>
+                                <a href="https://rouming.uz/ru/operators" target="_blank" class="usual_link" id="operatorESF">Оператора ЭСФ</a>
                             </p>
                         </div>
 
@@ -475,26 +474,28 @@
             </div>
 
             <div class="create_account_block">
-                <p>Уже есть в системе? &nbsp;</p>
+                <p id="alreadyInSysten">Уже есть в системе? &nbsp;</p>
                 <a id="registration" href="index.html" class="usual_link"> Авторизоваться</a>
             </div>
         </div>
     </div>
-    <div id="appFooter">
+    <div id="appFooter" class="hidden">
         <p>
             <a class="usual_link" id="toContacts" href="#">Техническая поддержка</a>
-            <a class="usual_link" href="#">Условия использования</a>
+            <a class="usual_link" href="#" id="termsOfUse">Условия использования</a>
         </p>
-        <p>
+        <p id="license">
             ©2013-2020 ЧП "Micros Development". Все права защищены.
         </p>
         <p>
-            <a class="usual_link" href="registration-oz.html">O'zbek tilida</a>
-            <a class="usual_link" href="#">Ўзбек тилида</a>
+            <a class="usual_link hidden" id="toOzb" href="#">O'zbek tilida</a>
+            <a class="usual_link hidden" id="toRus" href="#">Русский язык</a>
+            <a class="usual_link hidden" id="toUzb" href="#">Ўзбек тилида</a>
         </p>
     </div>
 </div>
 
+<script src="assets/js/language/msg.js"></script>
 <script src="assets/js/detect.js"></script>
 <script>
     var user = detect.parse(navigator.userAgent);
@@ -512,7 +513,7 @@
         var scriptContacts = document.createElement('script')
 
         scriptMedia.setAttribute('src', 'assets/js/reg/media.js')
-        scriptClick.setAttribute('src', 'assets/js/reg/rus/clickLogic.js')
+        scriptClick.setAttribute('src', 'assets/js/reg/clickLogic.js')
         scriptContacts.setAttribute('src', 'assets/js/contacts/contacts.js')
 
         document.body.insertAdjacentElement('beforeend', scriptMedia)
