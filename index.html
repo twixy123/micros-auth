@@ -327,10 +327,21 @@
                 <div id="signInWithLogAndPassword" class="main__block hidden">
                     <form id="formLogInWithLogin" class="form" name="formLogInWithLogin">
                         <div id="authSignInLogin" class="show" data-use="login">
-                            <ul id="authSignInUsersblock" class="main__menu_with_ecp hidden">
-                                <a href="!#" id="otherUser" class="usual_link">Авторизоваться другим пользователем</a>
-                                <span id="notCheckedUser"></span>
-                            </ul>
+                            <div id="authSignInUsersblock" class="hidden">
+                                <ul id="authSignInUsers" class="main__menu_with_ecp">
+                                </ul>
+                                <div class="form_footer_ul">
+                                    <button id="addUser">
+                                        <i class="fas fa-user-plus"></i>
+                                        <span id="otherUser">Добавить пользователя</span>
+                                    </button>
+                                    <button id="delUser">
+                                        <i class="fas fa-user-minus"></i>
+                                        <span id="delOtherUser">Удалить пользователя</span>
+                                    </button>
+                                </div>
+                            </div>
+
                             <div id="authSignInNoUsersLogin" class="hidden">
                                 <p class="field">
                                     <label for="loginName">Логин:</label>
@@ -340,12 +351,13 @@
                                         <i class="fas fa-ban"></i>
                                     </span>
                                 </p>
-                            </div>
-                            <div class="form_footer">
-                                <button id="nextBtnToAuthPassword" class="btn">Далее</button>
-                                <a href="!#" id="forgotPassword" class="usual_link">
-                                    Забыли пароль?
-                                </a>
+
+                                <div class="form_footer">
+                                    <button id="nextBtnToAuthPassword" class="btn">Далее</button>
+                                    <a href="!#" id="forgotPassword" class="usual_link">
+                                        Забыли пароль?
+                                    </a>
+                                </div>
                             </div>
                         </div>
                         <div id="authSignInPassword" class="hidden">

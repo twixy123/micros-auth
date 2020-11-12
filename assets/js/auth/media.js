@@ -5,7 +5,7 @@ setTimeout(() => {
     document.querySelector('.app_main').classList.add('show')
     if (localStorage.getItem('authFromWhere')) localStorage.removeItem('authFromWhere')
     if (localStorage.getItem('authType')) {
-        if (localStorage.getItem('user')) {
+        if (localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).length > 0) {
             renderUserLogin()
         }else{
             ShowHiddenBlock(

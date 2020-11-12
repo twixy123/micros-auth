@@ -57,39 +57,56 @@ function maxHeightForUl() {
 }
 
 function renderUserLogin(){
+    authSignInUsers.textContent = ''
     const userGet = JSON.parse(localStorage.getItem('user'))
-    const user = `
+    userGet.forEach(usg=>{
+        const user = `
                 <li class="main__list_with_ecp listUserLogin">
+                    <input type="hidden" name="userId" value="${usg.id}" class="usID">
                     <input type="hidden" name="check" value="notChecked" class="authUserCheck">
                     <a href="#" class="main__link_with_ecp userKeyLogin">
                         <span class="logo">
                           <i class="far fa-user-circle"></i>
                         </span>
                         <span class="details userDetail">
-                            <span class="userName">${userGet.login}</span>
-                            <span>${msg.lastTimeOnline}<span class="userDateLast">${userGet.date}</span></span>
+                            <span class="userName">${usg.login}</span>
+                            <span>${msg.lastTimeOnline}<span class="userDateLast">${usg.date}</span></span>
                         </span>
                     </a>
                 </li>
                             `
-    if (authSignInUsersblock.querySelector('.listUserLogin')){
-        let listUser = authSignInUsersblock.querySelector('.listUserLogin')
-        authSignInUsersblock.removeChild(listUser)
-    }
-    authSignInUsersblock.insertAdjacentHTML('afterbegin', user)
+        authSignInUsers.insertAdjacentHTML('beforeend', user)
+    })
     authSignInLogin.setAttribute('data-use', 'key')
+    authSignInUsers.setAttribute('data-method', 'login')
     ShowHiddenBlock(
         [authSignInUsersblock],
         [authSignInNoUsersLogin]
     )
-    let listUser = authSignInUsersblock.querySelector('.listUserLogin')
-    listUser.querySelector('.authUserCheck').value = 'notChecked'
-    listUser.querySelector('.userKeyLogin').addEventListener('click', e => {
-        e.preventDefault()
-        notCheckedUser.innerHTML = ''
-        listUser.querySelector('.userKeyLogin').style.background = 'rgb(243, 249, 255)'
-        listUser.querySelector('.authUserCheck').value = 'checked'
+    let listUser = authSignInUsers.querySelectorAll('.listUserLogin')
+    listUser.forEach(el=>{
+        el.querySelector('.authUserCheck').value = 'notChecked'
+        let usID = el.querySelector('.usID').value
+        el.querySelector('.userKeyLogin').addEventListener('click', e => {
+            e.preventDefault()
+            if (authSignInUsers.getAttribute('data-method') == 'delete'){
+                let newUsers = userGet.filter(e=>e.id !== +usID)
+                localStorage.setItem('user', JSON.stringify(newUsers))
+                renderUserLogin()
+                return
+            }
+            let userPassword = userGet.find(e=>e.id == usID).password
+            let userName = userGet.find(e=>e.id == usID).login
+            el.querySelector('.authUserCheck').value = 'checked'
+            chooseUserName.innerHTML = userName
+            loginPass.value = userPassword
+            ShowHiddenBlock(
+                [authSignInPassword],
+                [authSignInLogin]
+            )
+        })
     })
+
 }
 
 /* эта Функция будет нужна если Виктор снова захочет сделать тройную проверку на пароль при регистрации

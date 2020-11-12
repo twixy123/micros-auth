@@ -431,9 +431,11 @@ body {
     /*padding: 20px 0 10px;*/
 }
 
-#formLogInWithLogin > div{
+#formLogInWithLogin > div,
+#authSignInNoUsersLogin{
     width: 100%;
     flex-direction: column;
+    box-sizing: border-box;
 }
 
 .chooseUserDescription{
@@ -553,6 +555,13 @@ body {
     color: var(--color-border-gray);
 }
 
+.form_footer_ul{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .form_footer {
     margin-top: 20px;
     width: 100%;
@@ -574,10 +583,74 @@ body {
     justify-content: center;
 }
 
-#authSignInLogin .form_footer,
 #authSignInPassword{
     box-sizing: border-box;
     padding: 0 30px;
+}
+
+#authSignInUsersblock{
+    flex-direction: column;
+}
+
+#addUser{
+    border-left: 1px solid var(--color-border-gray);
+}
+
+#addUser,
+#delUser{
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid var(--color-border-gray);
+    padding: 10px;
+}
+#addUser{
+    border-right: 1px solid var(--color-border-gray);
+}
+
+#addUser i,
+#delUser i{
+    font-size: 30px;
+    margin-right: 5px;
+    color: var(--color-lang-gray);
+    width: 50%;
+}
+
+#addUser span,
+#delUser span{
+    text-align: center;
+    font-family: Roboto;
+    color: var(--color-dark-gray);
+    font-size: 14px;
+    width: 100%;
+}
+
+#addUser:hover,
+#delUser:hover{
+    background: var(--color-light-gray-hover);
+}
+
+#addUser:focus,
+#delUser:focus{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid var(--color-border-gray);
+}
+
+#addUser:active,
+#delUser:active{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid var(--color-border-gray);
+}
+
+#addUser:hover i{
+    color: #27ae60;
+}
+#delUser:hover i{
+    color: #c0392b;
 }
 
 .btn {

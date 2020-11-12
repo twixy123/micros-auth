@@ -127,7 +127,7 @@ const idElemsToChangeText = [
     },
     {
         tagId: [otherUser],
-        text: msg.changeUser
+        text: msg.addUser
     },
     {
         tagId: [textChooseUser],

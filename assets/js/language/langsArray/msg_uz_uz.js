@@ -45,7 +45,7 @@ const msg = {
     operatorESF: 'ЭСП оператори',
     onceInSysten: 'Тизим учун янги? &nbsp;',
     alreadyInSysten: 'Тизимда аллақачон мавжудми? &nbsp;',
-    registrationNow: 'Ҳозир рўйхатдан ўтинг',
+    registrationNow: 'Рўйхатдан ўтинг',
     autorizationNow: 'Кириш',
     technical_support: 'Техник ёрдам',
     termsOfUse: 'Foydalanish shartlari',
@@ -60,7 +60,8 @@ const msg = {
     incorrectPhone: 'Телефон майдонида нотўғри тўлдирилган',
     lastTimeOnline: 'Охирги марта онлайн ',
     chooseUser: 'Фойдаланувчини танланг',
-    changeUser: 'Бошқа фойдаланувчи томонидан киринг',
+    addUser: 'Фойдаланувчини қўшиш',
+    userDel: 'Фойдаланувчини ўчириш',
     choiseUser: 'Фойдаланувчи танланди',
 }
 

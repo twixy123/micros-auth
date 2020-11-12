@@ -45,7 +45,7 @@ const msg = {
     operatorESF: 'ESP operatori',
     onceInSysten: 'Tizim uchun yangi? &nbsp;',
     alreadyInSysten: 'Tizimda allaqachon mavjudmi? &nbsp;',
-    registrationNow: 'Hozir ro\'yxatdan o\'ting',
+    registrationNow: 'Ro\'yxatdan o\'ting',
     autorizationNow: 'Kirish',
     technical_support: 'Texnik yordam',
     termsOfUse: 'Foydalanish shartlari',
@@ -60,7 +60,8 @@ const msg = {
     incorrectPhone: 'Telefon maydonida noto\'g\'ri to\'ldirilgan',
     lastTimeOnline: 'Oxirgi marta onlayn ',
     chooseUser: 'Foydalanuvchini tanlang',
-    changeUser: 'Boshqa foydalanuvchi tomonidan kiring',
+    addUser: 'Foydalanuvchini qo\'shish',
+    userDel: 'Foydalanuvchini o\'chirish',
     choiseUser: 'Foydalanuvchi tanlandi',
 }
 

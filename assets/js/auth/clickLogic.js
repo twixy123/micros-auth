@@ -15,8 +15,7 @@ let observer = new MutationObserver(mutNode => {
     } else if (localStorage.getItem('authType') == 'ChoiseProfile') {
         changeTitle(
             msg.choiseProfile,
-            msg.pleaseChoiseProfileToAuthorized,
-            msg.enterWithECPKey
+            msg.pleaseChoiseProfileToAuthorized
         )
     } else if (localStorage.getItem('authType') == 'ForgotPassword') {
         changeTitle(
@@ -67,7 +66,6 @@ toUzb.addEventListener('click', e => {
     localStorage.setItem('lang', 'uz-uz')
     location.reload()
 })
-
 otherMethod.addEventListener('click', e => {
     e.preventDefault()
     if (localStorage.getItem('authType') == 'Login') {
@@ -85,10 +83,10 @@ otherMethod.addEventListener('click', e => {
         )
     }
     if (localStorage.getItem('authType') == 'ChoiseProfile') {
-        localStorage.setItem('authType', 'ECP')
+        localStorage.setItem('authType', 'Login')
         ShowHiddenBlock(
-            [signInWithECP],
-            [changeProfile]
+            [signInWithLogAndPassword,authSignInLogin],
+            [changeProfile, authSignInPassword]
         )
         return
     }
@@ -107,8 +105,8 @@ otherMethod.addEventListener('click', e => {
             )
         } else {
             ShowHiddenBlock(
-                [signInWithLogAndPassword,authSignInLogin],
-                [contacts,authSignInPassword]
+                [signInWithLogAndPassword, authSignInLogin],
+                [contacts, authSignInPassword]
             )
             localStorage.setItem('authType', 'Login')
         }
@@ -124,10 +122,9 @@ otherMethod.addEventListener('click', e => {
     }
     localStorage.setItem('authType', 'Login')
 })
-
 nextBtnToAuthPassword.addEventListener('click', e => {
     e.preventDefault()
-    if (authSignInLogin.getAttribute('data-use') == 'key') {
+    /*if (authSignInLogin.getAttribute('data-use') == 'key') {
         let check = false,
             name = ''
         notCheckedUser.innerHTML = msg.chooseUser
@@ -146,24 +143,23 @@ nextBtnToAuthPassword.addEventListener('click', e => {
                 [authSignInLogin]
             )
         }
-    } else {
-        if (localStorage.getItem('user')) {
-            if (JSON.parse(localStorage.getItem('user')).login != loginName.value) {
-                loginPass.value = ''
-                localStorage.removeItem('user')
-            } else {
-                loginPass.value = JSON.parse(localStorage.getItem('user')).password
-            }
-        }
-        checkInp(loginName, loginName.value.length > 3, msg.enterValidName)
-        if (checkInp(loginName, loginName.value.length > 3, msg.enterValidName)) {
-            chooseUserName.innerHTML = loginName.value
-            ShowHiddenBlock(
-                [authSignInPassword],
-                [authSignInLogin]
-            )
+    } else {*/
+    if (localStorage.getItem('user')) {
+        if (JSON.parse(localStorage.getItem('user')).login != loginName.value) {
+            loginPass.value = ''
+        } else {
+            loginPass.value = JSON.parse(localStorage.getItem('user')).password
         }
     }
+    checkInp(loginName, loginName.value.length > 3, msg.enterValidName)
+    if (checkInp(loginName, loginName.value.length > 3, msg.enterValidName)) {
+        chooseUserName.innerHTML = loginName.value
+        ShowHiddenBlock(
+            [authSignInPassword],
+            [authSignInLogin]
+        )
+    }
+    // }
 })
 prevBtnToAuthLogin.addEventListener('click', e => {
     e.preventDefault()
@@ -178,7 +174,9 @@ logInWithLogin.addEventListener('click', e => {
     if (checkInp(loginPass, loginPass.value.length > 5, msg.smallPassword)) {
         localStorage.setItem('authType', 'ChoiseProfile')
         if (authSignInLogin.getAttribute('data-use') == 'login') {
+            let users = []
             const user = {
+                id: new Date().getTime(),
                 login: loginName.value,
                 password: loginPass.value,
                 date: new Intl.DateTimeFormat('ru-ru', {
@@ -187,7 +185,13 @@ logInWithLogin.addEventListener('click', e => {
                     year: 'numeric'
                 }).format(new Date())
             }
-            localStorage.setItem('user', JSON.stringify(user))
+            if (localStorage.getItem('user')){
+                users = JSON.parse(localStorage.getItem('user'))
+            }
+
+            users.push(user)
+            localStorage.setItem('user', JSON.stringify(users))
+
             authSignInLogin.setAttribute('data-use', 'key')
             renderUserLogin()
         }
@@ -200,10 +204,33 @@ logInWithLogin.addEventListener('click', e => {
 otherUser.addEventListener('click', e => {
     e.preventDefault()
     authSignInLogin.setAttribute('data-use', 'login')
+    loginName.value = ''
+    loginName.style = 'border: 1px solid #C1C5C8'
+    loginPass.value = ''
+    loginPass.style = 'border: 1px solid #C1C5C8'
     ShowHiddenBlock(
         [authSignInNoUsersLogin],
         [authSignInUsersblock]
     )
+})
+delUser.addEventListener('click', e=>{
+    e.preventDefault()
+    const method = authSignInUsers.getAttribute('data-method')
+    let links = document.querySelectorAll('.userKeyLogin')
+    if (method == 'login'){
+        authSignInUsers.setAttribute('data-method', 'delete')
+        links.forEach(l=>{
+            const logo = l.querySelector('.logo')
+            logo.innerHTML = '<i class="fas fa-minus-circle" style="color:#c0392b;"></i>'
+        })
+    }else{
+        authSignInUsers.setAttribute('data-method', 'login')
+        links.forEach(l=>{
+            const logo = l.querySelector('.logo')
+            logo.innerHTML = '<i class="far fa-user-circle"></i>'
+        })
+    }
+
 })
 forgotPassword.addEventListener('click', e => {
     e.preventDefault()
@@ -278,11 +305,9 @@ changePassword.addEventListener('click', e => {
 newPassword.addEventListener('input', () => {
     checkInp(newPassword, newPassword.value.length > 5, msg.smallPassword)
 })
-
 checkNewPassword.addEventListener('input', () => {
     checkInp(checkNewPassword, checkNewPassword.value === newPassword.value, msg.notMatchPasswords)
 })
-
 //выше код для смены пароля
 
 obs(app)
