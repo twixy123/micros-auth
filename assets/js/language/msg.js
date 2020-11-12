@@ -27,6 +27,11 @@ if (lang) {
     if (lang == 'uz-uz') {
         toRus.classList.remove('hidden')
         toOzb.classList.remove('hidden')
+        toRus.style = `
+                        flex-direction: row-reverse;
+                        margin-left: 7px;
+                        margin-right: 0;
+                    `
         include('./assets/js/language/langsArray/msg_uz_uz.js')
     }
 } else {

@@ -1,5 +1,4 @@
 const app = document.getElementById('app')
-localStorage.setItem('authType', 'ECP')
 let observer = new MutationObserver(mutNode => {
     if (localStorage.getItem('authType') == 'ECP') {
         changeTitle(
@@ -24,9 +23,17 @@ let observer = new MutationObserver(mutNode => {
             msg.forgotPassword
         )
     } else if (localStorage.getItem('authType') == 'Contacts') {
-        changeTitle(
-            msg.technical_support
-        )
+        if (localStorage.getItem('authFromWhere') == 'ECP'){
+            changeTitle(
+                msg.technical_support,
+                '',
+                msg.enterWithECPKey
+            )
+        }else{
+            changeTitle(
+                msg.technical_support
+            )
+        }
     } else if (localStorage.getItem('authType') == 'ForgotPassword') {
         changeTitle(
             msg.forgotPassword + '?'
@@ -65,13 +72,13 @@ otherMethod.addEventListener('click', e => {
         localStorage.setItem('authType', 'ECP')
         ShowHiddenBlock(
             [signInWithECP],
-            [signInWithLogAndPass]
+            [signInWithLogAndPassword]
         )
         return
     }
     if (localStorage.getItem('authType') == 'ECP') {
         ShowHiddenBlock(
-            [signInWithLogAndPass],
+            [signInWithLogAndPassword],
             [signInWithECP]
         )
     }
@@ -85,19 +92,27 @@ otherMethod.addEventListener('click', e => {
     }
     if (localStorage.getItem('authType') == 'ForgotPassword') {
         ShowHiddenBlock(
-            [signInWithLogAndPass],
+            [signInWithLogAndPassword],
             [frgtPass]
         )
     }
     if (localStorage.getItem('authType') == 'Contacts') {
-        ShowHiddenBlock(
-            [signInWithLogAndPass],
-            [contacts]
-        )
+        if (localStorage.getItem('authFromWhere') == 'ECP'){
+            ShowHiddenBlock(
+                [signInWithECP],
+                [contacts]
+            )
+        }else{
+            ShowHiddenBlock(
+                [signInWithLogAndPassword],
+                [contacts]
+            )
+        }
+        localStorage.removeItem('authFromWhere')
     }
     if (localStorage.getItem('authType') == 'ToMailSended') {
         ShowHiddenBlock(
-            [signInWithLogAndPass, document.querySelector('.or_block')],
+            [signInWithLogAndPassword, document.querySelector('.or_block')],
             [checkYourEmail]
         )
         forgotEmailInp.style.border = `1px solid #C1C5C8`
@@ -115,7 +130,7 @@ logInWithLogin.addEventListener('click', e => {
         localStorage.setItem('authType', 'ChangeProfile')
         ShowHiddenBlock(
             [changeProfile],
-            [signInWithLogAndPass]
+            [signInWithLogAndPassword]
         )
     }
 })
@@ -124,7 +139,7 @@ forgotPassword.addEventListener('click', e => {
     localStorage.setItem('authType', 'ForgotPassword')
     ShowHiddenBlock(
         [frgtPass],
-        [signInWithLogAndPass]
+        [signInWithLogAndPassword]
     )
 })
 forgotPass.addEventListener('click', e => {
@@ -141,18 +156,22 @@ forgotPass.addEventListener('click', e => {
     }
 })
 toContacts.addEventListener('click', e => {
+    const from = localStorage.getItem('authType')
+    localStorage.setItem('authFromWhere', from)
     e.preventDefault()
-    localStorage.setItem('authType', 'Contacts')
-    ShowHiddenBlock(
-        [contacts],
-        [signInWithECP, signInWithLogAndPass, frgtPass]
-    )
+    setTimeout(()=>{
+        localStorage.setItem('authType', 'Contacts')
+        ShowHiddenBlock(
+            [contacts],
+            [signInWithECP, signInWithLogAndPassword, frgtPass]
+        )
+    },0)
 })
 backToAuthLogin.addEventListener('click', e => {
     e.preventDefault()
     localStorage.setItem('authType', 'Login')
     ShowHiddenBlock(
-        [signInWithLogAndPass],
+        [signInWithLogAndPassword],
         [frgtPass]
     )
 })
