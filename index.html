@@ -27,7 +27,7 @@
 
     <div id="oldBrowser" class="hidden">
         <p>
-            <a href="#">
+            <a href="!#">
                 <svg width="200px" height="40px" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1"
                      shape-rendering="geometricPrecision" text-rendering="geometricPrecision"
                      image-rendering="optimizeQuality"
@@ -191,7 +191,7 @@
 
     <div id="appMain" class="show">
         <div class="app_header">
-            <a href="#">
+            <a href="!#">
                 <svg width="200px" height="40px" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1"
                      shape-rendering="geometricPrecision" text-rendering="geometricPrecision"
                      image-rendering="optimizeQuality"
@@ -247,7 +247,7 @@
                     </div>
                     <ul id="keysAuth" class="main__menu_with_ecp show">
                         <li class="main__list_with_ecp">
-                            <a href="#" class="main__link_with_ecp ecp__keys">
+                            <a href="!#" class="main__link_with_ecp ecp__keys">
                                 <span class="logo">
                                   <i class="far fa-building"></i>
                                 </span>
@@ -266,7 +266,7 @@
                             </a>
                         </li>
                         <li class="main__list_with_ecp">
-                            <a href="#" class="main__link_with_ecp ecp__keys">
+                            <a href="!#" class="main__link_with_ecp ecp__keys">
                                 <span class="logo">
                                   <i class="far fa-building"></i>
                                 </span>
@@ -285,7 +285,7 @@
                             </a>
                         </li>
                         <li class="main__list_with_ecp">
-                            <a href="#" class="main__link_with_ecp ecp__keys">
+                            <a href="!#" class="main__link_with_ecp ecp__keys">
                                 <span class="logo">
                                   <i class="far fa-building"></i>
                                 </span>
@@ -304,7 +304,7 @@
                             </a>
                         </li>
                         <li class="main__list_with_ecp">
-                            <a href="#" class="main__link_with_ecp ecp__keys">
+                            <a href="!#" class="main__link_with_ecp ecp__keys">
                                 <span class="logo">
                                   <i class="far fa-user-circle"></i>
                                 </span>
@@ -326,35 +326,54 @@
                 </div>
                 <div id="signInWithLogAndPassword" class="main__block hidden">
                     <form id="formLogInWithLogin" class="form" name="formLogInWithLogin">
-                        <p class="field">
-                            <label for="loginName">Логин:</label>
-                            <input type="text" id="loginName" name="login" placeholder="login">
-                            <span class="small-description"></span>
-                            <span class="stop">
-                                <i class="fas fa-ban"></i>
-                            </span>
-                        </p>
-                        <p class="field">
-                            <label for="loginPass">Пароль:</label>
-                            <input type="password" id="loginPass">
-                            <span class="small-description"></span>
-                            <span class="stop">
-                                <i class="fas fa-ban"></i>
-                            </span>
-                        </p>
-
-                        <div class="form_footer">
-                            <button id="logInWithLogin" class="btn">Войти</button>
-                            <a href="#" id="forgotPassword" class="usual_link">
-                                Забыли пароль?
-                            </a>
+                        <div id="authSignInLogin" class="show" data-use="login">
+                            <ul id="authSignInUsersblock" class="main__menu_with_ecp hidden">
+                                <a href="!#" id="otherUser" class="usual_link">Авторизоваться другим пользователем</a>
+                                <span id="notCheckedUser"></span>
+                            </ul>
+                            <div id="authSignInNoUsersLogin" class="hidden">
+                                <p class="field">
+                                    <label for="loginName">Логин:</label>
+                                    <input type="text" id="loginName" name="login" placeholder="login">
+                                    <span class="small-description"></span>
+                                    <span class="stop">
+                                        <i class="fas fa-ban"></i>
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="form_footer">
+                                <button id="nextBtnToAuthPassword" class="btn">Далее</button>
+                                <a href="!#" id="forgotPassword" class="usual_link">
+                                    Забыли пароль?
+                                </a>
+                            </div>
+                        </div>
+                        <div id="authSignInPassword" class="hidden">
+                            <p class="chooseUserDescription">
+                                <span id="textChooseUser">Выбран пользователь:</span>
+                                <span id="chooseUserName"></span>
+                            </p>
+                            <p class="field">
+                                <label for="loginPass">Пароль:</label>
+                                <input type="password" id="loginPass">
+                                <span class="small-description"></span>
+                                <span class="stop">
+                                    <i class="fas fa-ban"></i>
+                                </span>
+                            </p>
+                            <div class="form_footer">
+                                <button id="logInWithLogin" class="btn">Войти</button>
+                                <a href="!#" id="prevBtnToAuthLogin" class="usual_link">
+                                    Вернуться назад
+                                </a>
+                            </div>
                         </div>
                     </form>
                 </div>
                 <div id="changeProfile" class="hidden">
                     <ul id="keysProfile" class="main__menu_with_ecp show">
                         <li class="main__list_with_ecp">
-                            <a href="#" class="main__link_with_ecp profile__keys">
+                            <a href="!#" class="main__link_with_ecp profile__keys">
                                 <span class="logo">
                                   <i class="far fa-building"></i>
                                 </span>
@@ -365,7 +384,7 @@
                             </a>
                         </li>
                         <li class="main__list_with_ecp">
-                            <a href="#" class="main__link_with_ecp profile__keys">
+                            <a href="!#" class="main__link_with_ecp profile__keys">
                                 <span class="logo">
                                   <i class="far fa-building"></i>
                                 </span>
@@ -376,7 +395,7 @@
                             </a>
                         </li>
                         <li class="main__list_with_ecp">
-                            <a href="#" class="main__link_with_ecp profile__keys">
+                            <a href="!#" class="main__link_with_ecp profile__keys">
                                 <span class="logo">
                                   <i class="far fa-building"></i>
                                 </span>
@@ -387,7 +406,7 @@
                             </a>
                         </li>
                         <li class="main__list_with_ecp">
-                            <a href="#" class="main__link_with_ecp profile__keys">
+                            <a href="!#" class="main__link_with_ecp profile__keys">
                                 <span class="logo">
                                   <i class="far fa-user-circle"></i>
                                 </span>
@@ -411,7 +430,7 @@
                         </p>
                         <div class="form_footer">
                             <button id="forgotPass" class="btn">Далее</button>
-                            <a href="#" id="backToAuthLogin" class="usual_link">
+                            <a href="!#" id="backToAuthLogin" class="usual_link">
                                 Вернуться назад
                             </a>
                         </div>
@@ -508,7 +527,7 @@
                 </div>
 
                 <div class="use_other_method">
-                    <a href="#" class="usual_link" id="otherMethod">
+                    <a href="!#" class="usual_link" id="otherMethod">
                         Войти с помощью логина и пароля
                     </a>
                 </div>
@@ -517,9 +536,10 @@
             <div id="condition">
                 <p>
                     <span id="spCond1">Входя в систему вы соглашаетесь с </span>
-                    <a href="#" target="_blank" class="usual_link" id="termOfUseInApp">Условиями использования</a>
+                    <a href="!#" target="_blank" class="usual_link" id="termOfUseInApp">Условиями использования</a>
                     <span id="spCond2">, а так же вы можете свободно выбрать</span>
-                    <a href="https://rouming.uz/ru/operators" target="_blank" class="usual_link" id="operatorESF">Оператора ЭСФ</a>
+                    <a href="https://rouming.uz/ru/operators" target="_blank" class="usual_link" id="operatorESF">Оператора
+                        ЭСФ</a>
                 </p>
             </div>
 
@@ -532,16 +552,16 @@
 
     <div id="appFooter" class="hidden">
         <p>
-            <a class="usual_link" id="toContacts" href="#">Техническая поддержка</a>
-            <a class="usual_link" href="#" id="termsOfUse">Условия использования</a>
+            <a class="usual_link" id="toContacts" href="!#">Техническая поддержка</a>
+            <a class="usual_link" href="!#" id="termsOfUse">Условия использования</a>
         </p>
         <p id="license">
             ©2013-2020 ЧП "Micros Development". Все права защищены.
         </p>
         <p>
-            <a class="usual_link hidden" id="toOzb" href="#">O'zbek tilida</a>
-            <a class="usual_link hidden" id="toRus" href="#">Русский язык</a>
-            <a class="usual_link hidden" id="toUzb" href="#">Ўзбек тилида</a>
+            <a class="usual_link hidden" id="toOzb" href="!#">O'zbek tilida</a>
+            <a class="usual_link hidden" id="toRus" href="!#">Русский язык</a>
+            <a class="usual_link hidden" id="toUzb" href="!#">Ўзбек тилида</a>
         </p>
     </div>
 
@@ -549,6 +569,7 @@
 
 <script src="assets/js/language/msg.js"></script>
 <script src="assets/js/detect.js"></script>
+<script src="assets/js/functions.js"></script>
 <script>
     var user = detect.parse(navigator.userAgent);
     if (user.browser.family === 'IE') {

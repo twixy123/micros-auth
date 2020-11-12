@@ -1,5 +1,6 @@
 const app = document.getElementById('app')
 let observer = new MutationObserver(mutNode => {
+    scroll(0, 50)
     if (localStorage.getItem('authType') == 'ECP') {
         changeTitle(
             msg.enterInSystem,
@@ -11,7 +12,7 @@ let observer = new MutationObserver(mutNode => {
             msg.autirizationWithLoginAndPassword,
             msg.enterWithECPKey
         )
-    } else if (localStorage.getItem('authType') == 'ChangeProfile') {
+    } else if (localStorage.getItem('authType') == 'ChoiseProfile') {
         changeTitle(
             msg.choiseProfile,
             msg.pleaseChoiseProfileToAuthorized,
@@ -23,13 +24,13 @@ let observer = new MutationObserver(mutNode => {
             msg.forgotPassword
         )
     } else if (localStorage.getItem('authType') == 'Contacts') {
-        if (localStorage.getItem('authFromWhere') == 'ECP'){
+        if (localStorage.getItem('authFromWhere') == 'ECP') {
             changeTitle(
                 msg.technical_support,
                 '',
                 msg.enterWithECPKey
             )
-        }else{
+        } else {
             changeTitle(
                 msg.technical_support
             )
@@ -54,17 +55,17 @@ let observer = new MutationObserver(mutNode => {
 toOzb.addEventListener('click', e => {
     e.preventDefault()
     localStorage.setItem('lang', 'uz-oz')
-    location.href = location.href
+    location.reload()
 })
 toRus.addEventListener('click', e => {
     e.preventDefault()
     localStorage.setItem('lang', 'ru-ru')
-    location.href = location.href
+    location.reload()
 })
 toUzb.addEventListener('click', e => {
     e.preventDefault()
     localStorage.setItem('lang', 'uz-uz')
-    location.href = location.href
+    location.reload()
 })
 otherMethod.addEventListener('click', e => {
     e.preventDefault()
@@ -78,11 +79,11 @@ otherMethod.addEventListener('click', e => {
     }
     if (localStorage.getItem('authType') == 'ECP') {
         ShowHiddenBlock(
-            [signInWithLogAndPassword],
-            [signInWithECP]
+            [signInWithLogAndPassword, authSignInLogin],
+            [signInWithECP, authSignInPassword]
         )
     }
-    if (localStorage.getItem('authType') == 'ChangeProfile') {
+    if (localStorage.getItem('authType') == 'ChoiseProfile') {
         localStorage.setItem('authType', 'ECP')
         ShowHiddenBlock(
             [signInWithECP],
@@ -97,18 +98,21 @@ otherMethod.addEventListener('click', e => {
         )
     }
     if (localStorage.getItem('authType') == 'Contacts') {
-        if (localStorage.getItem('authFromWhere') == 'ECP'){
+        if (localStorage.getItem('authFromWhere') == 'ECP') {
+            localStorage.setItem('authType', 'ECP')
             ShowHiddenBlock(
                 [signInWithECP],
                 [contacts]
             )
-        }else{
+        } else {
             ShowHiddenBlock(
-                [signInWithLogAndPassword],
-                [contacts]
+                [signInWithLogAndPassword,authSignInLogin],
+                [contacts,authSignInPassword]
             )
+            localStorage.setItem('authType', 'Login')
         }
         localStorage.removeItem('authFromWhere')
+        return
     }
     if (localStorage.getItem('authType') == 'ToMailSended') {
         ShowHiddenBlock(
@@ -119,20 +123,86 @@ otherMethod.addEventListener('click', e => {
     }
     localStorage.setItem('authType', 'Login')
 })
+
+nextBtnToAuthPassword.addEventListener('click', e => {
+    e.preventDefault()
+    if (authSignInLogin.getAttribute('data-use') == 'key') {
+        let check = false,
+            name = ''
+        notCheckedUser.innerHTML = 'Выберите пользвателя'
+        document.querySelectorAll('.userKeyLogin').forEach(e => {
+            if (e.parentElement.querySelector('.authUserCheck').value == 'checked') {
+                name = e.querySelector('.userName').innerHTML
+                check = true
+            }
+        })
+        if (check) {
+            chooseUserName.innerHTML = name
+            notCheckedUser.innerHTML = ''
+            loginPass.value = JSON.parse(localStorage.getItem('user')).password
+            ShowHiddenBlock(
+                [authSignInPassword],
+                [authSignInLogin]
+            )
+        }
+    } else {
+        if (localStorage.getItem('user')) {
+            if (JSON.parse(localStorage.getItem('user')).login != loginName.value) {
+                loginPass.value = ''
+                localStorage.removeItem('user')
+            } else {
+                loginPass.value = JSON.parse(localStorage.getItem('user')).password
+            }
+        }
+        checkInp(loginName, loginName.value.length > 3, msg.enterValidName)
+        if (checkInp(loginName, loginName.value.length > 3, msg.enterValidName)) {
+            chooseUserName.innerHTML = loginName.value
+            ShowHiddenBlock(
+                [authSignInPassword],
+                [authSignInLogin]
+            )
+        }
+    }
+})
+prevBtnToAuthLogin.addEventListener('click', e => {
+    e.preventDefault()
+    ShowHiddenBlock(
+        [authSignInLogin],
+        [authSignInPassword]
+    )
+})
 logInWithLogin.addEventListener('click', e => {
     e.preventDefault()
-    checkInp(loginName, loginName.value.length > 3, msg.enterValidName)
     checkInp(loginPass, loginPass.value.length > 5, msg.smallPassword)
-    if (
-        checkInp(loginName, loginName.value.length > 3, msg.enterValidName) &&
-        checkInp(loginPass, loginPass.value.length > 5, msg.smallPassword)
-    ) {
-        localStorage.setItem('authType', 'ChangeProfile')
+    if (checkInp(loginPass, loginPass.value.length > 5, msg.smallPassword)) {
+        localStorage.setItem('authType', 'ChoiseProfile')
+        if (authSignInLogin.getAttribute('data-use') == 'login') {
+            const user = {
+                login: loginName.value,
+                password: loginPass.value,
+                date: new Intl.DateTimeFormat('ru-ru', {
+                    day: 'numeric',
+                    month: 'numeric',
+                    year: 'numeric'
+                }).format(new Date())
+            }
+            localStorage.setItem('user', JSON.stringify(user))
+            authSignInLogin.setAttribute('data-use', 'key')
+            renderUserLogin()
+        }
         ShowHiddenBlock(
-            [changeProfile],
-            [signInWithLogAndPassword]
+            [changeProfile, authSignInUsersblock],
+            [signInWithLogAndPassword, authSignInNoUsersLogin]
         )
     }
+})
+otherUser.addEventListener('click', e => {
+    e.preventDefault()
+    authSignInLogin.setAttribute('data-use', 'login')
+    ShowHiddenBlock(
+        [authSignInNoUsersLogin],
+        [authSignInUsersblock]
+    )
 })
 forgotPassword.addEventListener('click', e => {
     e.preventDefault()
@@ -159,13 +229,13 @@ toContacts.addEventListener('click', e => {
     const from = localStorage.getItem('authType')
     localStorage.setItem('authFromWhere', from)
     e.preventDefault()
-    setTimeout(()=>{
+    setTimeout(() => {
         localStorage.setItem('authType', 'Contacts')
         ShowHiddenBlock(
             [contacts],
             [signInWithECP, signInWithLogAndPassword, frgtPass]
         )
-    },0)
+    }, 0)
 })
 backToAuthLogin.addEventListener('click', e => {
     e.preventDefault()
@@ -213,46 +283,5 @@ checkNewPassword.addEventListener('input', () => {
 })
 
 //выше код для смены пароля
-function changeTitle(titleText, infoSignText = '', otherText = msg.enterWithLoginAndPassword) {
-    const title = document.getElementById('title'),
-        infoSignTitle = document.getElementById('infoSignTitle'),
-        otherMethod = document.getElementById('otherMethod')
-    title.innerHTML = titleText
-    infoSignTitle.innerHTML = infoSignText
-    otherMethod.innerHTML = otherText
-}
-
-function checkInp(input, condition, textError) {
-    if (condition) {
-        input.style.border = '1px solid #51AA4D'
-        input.nextElementSibling.innerHTML = ''
-        input.parentElement.querySelector('.stop').style.display = 'none'
-        return true
-    }
-    input.style.border = '1px solid #b63535'
-    input.nextElementSibling.innerHTML = textError
-    input.parentElement.querySelector('.stop').style.display = 'inline-block'
-    return false
-}
-
-function ShowHiddenBlock(arrShow, arrHidden) {
-    arrShow.forEach(e => {
-        e.classList.remove('hidden')
-        e.classList.add('show')
-    })
-    arrHidden.forEach(e => {
-        e.classList.remove('show')
-        e.classList.add('hidden')
-    })
-}
-
-function obs(el) {
-    observer.disconnect()
-    observer.observe(el, {
-        attributes: true,
-        subtree: true,
-        attributeFilter: ['class']
-    })
-}
 
 obs(app)

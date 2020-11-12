@@ -36,6 +36,10 @@
     box-sizing: border-box;
 }
 
+#signInWithLogAndPassword.main__block{
+    padding: 0;
+}
+
 .show {
     display: flex !important;
 }
@@ -183,6 +187,10 @@ body {
     font-style: italic;
 }
 
+#authSignInNoUsersLogin{
+    padding: 0 30px;
+}
+
 .main__menu_with_ecp {
     width: 100%;
     display: flex;
@@ -255,7 +263,11 @@ body {
     margin-bottom: 7px;
 }
 
-.details span:first-child {
+.userDetail span{
+    font-style: italic;
+}
+
+.details > span:first-child {
     color: #000 !important;
     font-size: 16px !important;
     font-weight: 500 !important;
@@ -419,6 +431,27 @@ body {
     /*padding: 20px 0 10px;*/
 }
 
+#formLogInWithLogin > div{
+    width: 100%;
+    flex-direction: column;
+}
+
+.chooseUserDescription{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Roboto;
+    font-size: 12px;
+    color: var(--color-dark-gray);
+    margin: 10px 0;
+    width: 100%;
+}
+
+.chooseUserDescription span:last-child{
+    font-weight: 500;
+    font-size: 14px;
+}
+
 .field {
     width: 100%;
     display: flex;
@@ -435,7 +468,8 @@ body {
     color: var(--color-gray);
     margin-right: 20px;
 }
-.field > .small-description{
+.field > .small-description,
+#notCheckedUser{
     padding: 5px 0;
     font-family: 'Roboto';
     font-size: 10px;
@@ -527,6 +561,7 @@ body {
     align-items: center;
     font-family: Roboto;
     flex-direction: row-reverse;
+    box-sizing: border-box;
 }
 
 .form_footer.center{
@@ -537,6 +572,12 @@ body {
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+#authSignInLogin .form_footer,
+#authSignInPassword{
+    box-sizing: border-box;
+    padding: 0 30px;
 }
 
 .btn {

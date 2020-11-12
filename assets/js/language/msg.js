@@ -1,10 +1,6 @@
 const body = document.body
 const head = document.head
 
-function addInnerHTML(idElem, text){
-    idElem.forEach(e=>e.innerHTML = text)
-}
-
 function include(src) {
     const script = document.createElement('script')
     script.setAttribute('src', src)

@@ -16,6 +16,7 @@ toUzb.addEventListener('click', e => {
     location.href = location.href
 })
 let observer = new MutationObserver(mutNode => {
+    scroll(0, 50)
     if (localStorage.getItem('regType') == 'Contacts') {
         title.innerHTML = msg.technical_support
     }
@@ -30,7 +31,6 @@ regNextBtn.addEventListener('click', e => {
     e.preventDefault()
     localStorage.setItem('regType', 'Login')
     ShowHiddenBlock([regWithLogAndPass], [regWithECP])
-    scroll(0, 50)
 })
 regPrevBtn.addEventListener('click', e => {
     e.preventDefault()
@@ -124,73 +124,4 @@ logInWithLogin.addEventListener('click', e => {
         location.href = location.href
     }
 })
-/*
-function checkPassword(input) {
-    let symbols = document.getElementById('symbols6')
-    let letters = document.getElementById('letters')
-    let numbers = document.getElementById('numbers')
-    let regPasFull = /(?=.*[A-Z])[0-9A-Z]{6,}/g
-    let regPasLetters = /(?=.*[A-Z])/g
-    let regPasNum = /(?=.*[0-9])/g
-
-    symbols.innerHTML = msg.smallPassword'
-    letters.innerHTML = 'Пароль должен содержать заглавные латинского алфавита буквы'
-    numbers.innerHTML = 'Пароль должен содержать цифры'
-    symbols.style = 'color: #b63535; padding: 5px 0;'
-    letters.style = 'color: #b63535; padding: 5px 0;'
-    numbers.style = 'color: #b63535; padding: 5px 0;'
-    input.style.border = '1px solid #b63535'
-    input.parentElement.querySelector('.stop').style.display = 'inline-block'
-
-    if (input.value.length > 5) {
-        symbols.style.color = '#51AA4D'
-    }
-    if (input.value.match(regPasLetters)) {
-        letters.style.color = '#51AA4D'
-    }
-    if (input.value.match(regPasNum)) {
-        numbers.style.color = '#51AA4D'
-    }
-    if (input.value.match(regPasFull)) {
-        input.style.border = '1px solid #51AA4D'
-        input.parentElement.querySelector('.stop').style.display = 'none'
-        symbols.innerHTML = ''
-        letters.innerHTML = ''
-        numbers.innerHTML = ''
-        letters.style = 'padding: 0;'
-        numbers.style = 'padding: 0;'
-        return true
-    }
-    return false
-}*/
-function checkInp(input, condition, textError) {
-    if (condition) {
-        input.style.border = '1px solid #51AA4D'
-        input.nextElementSibling.innerHTML = ''
-        input.parentElement.querySelector('.stop').style.display = 'none'
-        return true
-    }
-    input.style.border = '1px solid #b63535'
-    input.nextElementSibling.innerHTML = textError
-    input.parentElement.querySelector('.stop').style.display = 'inline-block'
-    return false
-}
-function ShowHiddenBlock(arrShow, arrHidden) {
-    arrShow.forEach(e => {
-        e.classList.remove('hidden')
-        e.classList.add('show')
-    })
-    arrHidden.forEach(e => {
-        e.classList.remove('show')
-        e.classList.add('hidden')
-    })
-}
-function obs(el) {
-    observer.disconnect()
-    observer.observe(el, {
-        attributes: true,
-        subtree: true,
-        attributeFilter: ['class']
-    })
-}
 obs(app)
