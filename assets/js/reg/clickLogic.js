@@ -17,13 +17,7 @@ toUzb.addEventListener('click', e => {
 })
 let observer = new MutationObserver(mutNode => {
     scroll(0, 50)
-    if (localStorage.getItem('regType') == 'Contacts') {
-        title.innerHTML = msg.technical_support
-    }
-    title.innerHTML = msg.registration
-    infoSignTitle.innerHTML = ''
-    if (localStorage.getItem('regType') == 'ECP') infoSignTitle.innerHTML = msg.choiseECPSignature
-    if (!infoSignTitle.innerHTML) infoSignTitle.style.padding = '0'
+    renderTitleReg()
     obs(app)
 
 })

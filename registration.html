@@ -248,83 +248,15 @@
                             <a class="usual_link" href="https://e-imzo.uz/" target="_blank" id="downloadEIMZO">Скачать</a>
                         </p>
                     </div>
-                    <ul id="keysAuth" class="main__menu_with_ecp show">
-                        <li class="main__list_with_ecp">
-                            <a href="#" class="main__link_with_ecp ecp__keys">
-                                <span class="logo">
-                                  <i class="far fa-building"></i>
-                                </span>
-                                <span class="details">
-                                  <span class="ecp_company_name">ASPEKT OILAVIY KORXONA</span>
-                                  <span class="ecp_name">ЯДЫКОВА ТАТЬЯНА КОНСТАТИНОВНА</span>
-                                  <span class="ecp_tin">302654054</span>
-                                </span>
-                                <span class="ecp_info">
-                                  <i class="fas fa-info-circle"></i>
-                                  <span class="ecp_info__text">
-                                      <span class="validate_ECP">Срок действия сертификата:</span>
-                                      <span class="validate_date_ECP">15.07.2019 - 15.07.2021</span>
-                                  </span>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="main__list_with_ecp">
-                            <a href="#" class="main__link_with_ecp ecp__keys">
-                                <span class="logo">
-                                  <i class="far fa-building"></i>
-                                </span>
-                                <span class="details">
-                                  <span class="ecp_company_name">MICROS DEVELOPMENT XK</span>
-                                  <span class="ecp_name">ВЕКСЛЕР АЛЕКСАНДР СЕМЕНОВИЧ</span>
-                                  <span class="ecp_tin">302738051</span>
-                                </span>
-                                <span class="ecp_info">
-                                  <i class="fas fa-info-circle"></i>
-                                  <span class="ecp_info__text">
-                                      <span class="validate_ECP">Срок действия сертификата:</span>
-                                      <span class="validate_date_ECP">09.11.2018 - 09.11.2020</span>
-                                  </span>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="main__list_with_ecp">
-                            <a href="#" class="main__link_with_ecp ecp__keys">
-                                <span class="logo">
-                                  <i class="far fa-building"></i>
-                                </span>
-                                <span class="details">
-                                  <span class="ecp_company_name">SIMPLE GAMES MCHJ</span>
-                                  <span class="ecp_name">GALIAXMEDOVA KAMILA RAFISOVNA</span>
-                                  <span class="ecp_tin">305015214</span>
-                                </span>
-                                <span class="ecp_info">
-                                  <i class="fas fa-info-circle"></i>
-                                  <span class="ecp_info__text">
-                                      <span class="validate_ECP">Срок действия сертификата:</span>
-                                      <span class="validate_date_ECP">30.11.2019 - 20.11.2021</span>
-                                  </span>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="main__list_with_ecp">
-                            <a href="#" class="main__link_with_ecp ecp__keys">
-                                <span class="logo">
-                                  <i class="far fa-user-circle"></i>
-                                </span>
-                                <span class="details">
-                                  <span class="ecp_name">ВЕКСЛЕР ВИКТОР АЛЕКСАНДРОВИЧ</span>
-                                  <span class="ecp_tin">487007226</span>
-                                </span>
-                                <span class="ecp_info">
-                                  <i class="fas fa-info-circle"></i>
 
-                                  <span class="ecp_info__text">
-                                      <span class="validate_ECP">Срок действия сертификата:</span>
-                                      <span class="validate_date_ECP">21.07.2020 - 21.07.2022</span>
-                                  </span>
-                                </span>
-                            </a>
-                        </li>
+                    <div id="notFoundKeys" class="hidden">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <p id="dontHaveKeys">
+                            У вас нет ключей
+                        </p>
+                    </div>
+                    <ul id="keysAuth" class="main__menu_with_ecp show">
+
                     </ul>
                     <div class="main__block form_footer center">
                         <button class="btn" id="regNextBtn" disabled="disabled">Далее</button>
@@ -510,15 +442,12 @@
         oldBrowser.classList.add('show')
     } else {
         var scriptMedia = document.createElement('script')
-        var scriptClick = document.createElement('script')
         var scriptContacts = document.createElement('script')
 
         scriptMedia.setAttribute('src', 'assets/js/reg/media.js')
-        scriptClick.setAttribute('src', 'assets/js/reg/clickLogic.js')
         scriptContacts.setAttribute('src', 'assets/js/contacts/contacts.js')
 
         document.body.insertAdjacentElement('beforeend', scriptMedia)
-        document.body.insertAdjacentElement('beforeend', scriptClick)
         document.body.insertAdjacentElement('beforeend', scriptContacts)
     }
 </script>

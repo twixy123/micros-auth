@@ -1,6 +1,9 @@
 <!doctype html>
 <html lang="ru">
 <head>
+    <style>
+
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -15,11 +18,12 @@
     <meta property="og:url" content="https://micros24.uz/"/>
     <meta property="og:image" content="./assets/images/logo_micros24.jpg"/>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="assets/fonts/fonawesome/all.min.css">
     <link rel="stylesheet" href="assets/fonts/roboto/roboto.css">
+    <link rel="stylesheet" href="assets/fonts/fonawesome/all.min.css">
     <link rel="stylesheet" href="assets/css/index.css">
     <link rel="stylesheet" href="assets/css/media.css">
     <title>Вход в систему | Micros24</title>
+
 </head>
 <body>
 
@@ -27,7 +31,7 @@
 
     <div id="oldBrowser" class="hidden">
         <p>
-            <a href="!#">
+            <a href="#">
                 <svg width="200px" height="40px" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1"
                      shape-rendering="geometricPrecision" text-rendering="geometricPrecision"
                      image-rendering="optimizeQuality"
@@ -191,7 +195,7 @@
 
     <div id="appMain" class="show">
         <div class="app_header">
-            <a href="!#">
+            <a href="#">
                 <svg width="200px" height="40px" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1"
                      shape-rendering="geometricPrecision" text-rendering="geometricPrecision"
                      image-rendering="optimizeQuality"
@@ -245,84 +249,13 @@
                         </p>
                         <a class="usual_link" href="https://e-imzo.uz/" target="_blank" id="downloadEIMZO">Скачать</a>
                     </div>
-                    <ul id="keysAuth" class="main__menu_with_ecp show">
-                        <li class="main__list_with_ecp">
-                            <a href="!#" class="main__link_with_ecp ecp__keys">
-                                <span class="logo">
-                                  <i class="far fa-building"></i>
-                                </span>
-                                <span class="details">
-                                  <span class="ecp_name">ASPEKT OILAVIY KORXONA</span>
-                                  <span>ЯДЫКОВА ТАТЬЯНА КОНСТАТИНОВНА</span>
-                                  <span>302654054</span>
-                                </span>
-                                <span class="ecp_info">
-                                  <i class="fas fa-info-circle"></i>
-                                  <span class="ecp_info__text">
-                                      <span class="validate_ECP">Срок действия сертификата:</span>
-                                      <span class="validate_date_ECP">15.07.2019 - 15.07.2021</span>
-                                  </span>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="main__list_with_ecp">
-                            <a href="!#" class="main__link_with_ecp ecp__keys">
-                                <span class="logo">
-                                  <i class="far fa-building"></i>
-                                </span>
-                                <span class="details">
-                                  <span class="ecp_name">MICROS DEVELOPMENT XK</span>
-                                  <span>ВЕКСЛЕР АЛЕКСАНДР СЕМЕНОВИЧ</span>
-                                  <span>302738051</span>
-                                </span>
-                                <span class="ecp_info">
-                                  <i class="fas fa-info-circle"></i>
-                                  <span class="ecp_info__text">
-                                      <span class="validate_ECP">Срок действия сертификата:</span>
-                                      <span class="validate_date_ECP">09.11.2018 - 09.11.2020</span>
-                                  </span>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="main__list_with_ecp">
-                            <a href="!#" class="main__link_with_ecp ecp__keys">
-                                <span class="logo">
-                                  <i class="far fa-building"></i>
-                                </span>
-                                <span class="details">
-                                  <span class="ecp_name">SIMPLE GAMES MCHJ</span>
-                                  <span>GALIAXMEDOVA KAMILA RAFISOVNA</span>
-                                  <span>305015214</span>
-                                </span>
-                                <span class="ecp_info">
-                                  <i class="fas fa-info-circle"></i>
-                                  <span class="ecp_info__text">
-                                      <span class="validate_ECP">Срок действия сертификата:</span>
-                                      <span class="validate_date_ECP">30.11.2019 - 20.11.2021</span>
-                                  </span>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="main__list_with_ecp">
-                            <a href="!#" class="main__link_with_ecp ecp__keys">
-                                <span class="logo">
-                                  <i class="far fa-user-circle"></i>
-                                </span>
-                                <span class="details">
-                                  <span class="ecp_name">ВЕКСЛЕР ВИКТОР АЛЕКСАНДРОВИЧ</span>
-                                  <span class="ecp_tin">487007226</span>
-                                </span>
-                                <span class="ecp_info">
-                                  <i class="fas fa-info-circle"></i>
-
-                                  <span class="ecp_info__text">
-                                      <span class="validate_ECP">Срок действия сертификата:</span>
-                                      <span class="validate_date_ECP">21.07.2020 - 21.07.2022</span>
-                                  </span>
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
+                    <div id="notFoundKeys" class="hidden">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <p id="dontHaveKeys">
+                            У вас нет ключей
+                        </p>
+                    </div>
+                    <ul id="keysAuth" class="main__menu_with_ecp hidden"></ul>
                 </div>
                 <div id="signInWithLogAndPassword" class="main__block hidden">
                     <form id="formLogInWithLogin" class="form" name="formLogInWithLogin">
@@ -341,7 +274,6 @@
                                     </button>
                                 </div>
                             </div>
-
                             <div id="authSignInNoUsersLogin" class="hidden">
                                 <p class="field">
                                     <label for="loginName">Логин:</label>
@@ -354,7 +286,7 @@
 
                                 <div class="form_footer">
                                     <button id="nextBtnToAuthPassword" class="btn">Далее</button>
-                                    <a href="!#" id="forgotPassword" class="usual_link">
+                                    <a href="#" id="forgotPassword" class="usual_link">
                                         Забыли пароль?
                                     </a>
                                 </div>
@@ -375,7 +307,7 @@
                             </p>
                             <div class="form_footer">
                                 <button id="logInWithLogin" class="btn">Войти</button>
-                                <a href="!#" id="prevBtnToAuthLogin" class="usual_link">
+                                <a href="#" id="prevBtnToAuthLogin" class="usual_link">
                                     Вернуться назад
                                 </a>
                             </div>
@@ -385,7 +317,7 @@
                 <div id="changeProfile" class="hidden">
                     <ul id="keysProfile" class="main__menu_with_ecp show">
                         <li class="main__list_with_ecp">
-                            <a href="!#" class="main__link_with_ecp profile__keys">
+                            <a href="#" class="main__link_with_ecp profile__keys">
                                 <span class="logo">
                                   <i class="far fa-building"></i>
                                 </span>
@@ -396,7 +328,7 @@
                             </a>
                         </li>
                         <li class="main__list_with_ecp">
-                            <a href="!#" class="main__link_with_ecp profile__keys">
+                            <a href="#" class="main__link_with_ecp profile__keys">
                                 <span class="logo">
                                   <i class="far fa-building"></i>
                                 </span>
@@ -407,7 +339,7 @@
                             </a>
                         </li>
                         <li class="main__list_with_ecp">
-                            <a href="!#" class="main__link_with_ecp profile__keys">
+                            <a href="#" class="main__link_with_ecp profile__keys">
                                 <span class="logo">
                                   <i class="far fa-building"></i>
                                 </span>
@@ -418,7 +350,7 @@
                             </a>
                         </li>
                         <li class="main__list_with_ecp">
-                            <a href="!#" class="main__link_with_ecp profile__keys">
+                            <a href="#" class="main__link_with_ecp profile__keys">
                                 <span class="logo">
                                   <i class="far fa-user-circle"></i>
                                 </span>
@@ -442,7 +374,7 @@
                         </p>
                         <div class="form_footer">
                             <button id="forgotPass" class="btn">Далее</button>
-                            <a href="!#" id="backToAuthLogin" class="usual_link">
+                            <a href="#" id="backToAuthLogin" class="usual_link">
                                 Вернуться назад
                             </a>
                         </div>
@@ -539,7 +471,7 @@
                 </div>
 
                 <div class="use_other_method">
-                    <a href="!#" class="usual_link" id="otherMethod">
+                    <a href="#" class="usual_link" id="otherMethod">
                         Войти с помощью логина и пароля
                     </a>
                 </div>
@@ -548,7 +480,7 @@
             <div id="condition">
                 <p>
                     <span id="spCond1">Входя в систему вы соглашаетесь с </span>
-                    <a href="!#" target="_blank" class="usual_link" id="termOfUseInApp">Условиями использования</a>
+                    <a href="#" target="_blank" class="usual_link" id="termOfUseInApp">Условиями использования</a>
                     <span id="spCond2">, а так же вы можете свободно выбрать</span>
                     <a href="https://rouming.uz/ru/operators" target="_blank" class="usual_link" id="operatorESF">Оператора
                         ЭСФ</a>
@@ -564,16 +496,16 @@
 
     <div id="appFooter" class="hidden">
         <p>
-            <a class="usual_link" id="toContacts" href="!#">Техническая поддержка</a>
-            <a class="usual_link" href="!#" id="termsOfUse">Условия использования</a>
+            <a class="usual_link" id="toContacts" href="#">Техническая поддержка</a>
+            <a class="usual_link" href="#" id="termsOfUse">Условия использования</a>
         </p>
         <p id="license">
             ©2013-2020 ЧП "Micros Development". Все права защищены.
         </p>
         <p>
-            <a class="usual_link hidden" id="toOzb" href="!#">O'zbek tilida</a>
-            <a class="usual_link hidden" id="toRus" href="!#">Русский язык</a>
-            <a class="usual_link hidden" id="toUzb" href="!#">Ўзбек тилида</a>
+            <a class="usual_link hidden" id="toOzb" href="#">O'zbek tilida</a>
+            <a class="usual_link hidden" id="toRus" href="#">Русский язык</a>
+            <a class="usual_link hidden" id="toUzb" href="#">Ўзбек тилида</a>
         </p>
     </div>
 
@@ -588,22 +520,23 @@
         var oldBrowser = document.getElementById('oldBrowser')
         var loading = document.getElementById('loading')
         var appFooter = document.getElementById('appFooter')
+        var appMain = document.getElementById('appMain')
         loading.classList.add('hidden')
         appFooter.classList.add('hidden')
         oldBrowser.classList.remove('hidden')
         oldBrowser.classList.add('show')
+        appMain.classList.remove('show')
+        appMain.classList.add('hidden')
     } else {
         var scriptMedia = document.createElement('script')
-        var scriptClick = document.createElement('script')
         var scriptContacts = document.createElement('script')
 
         scriptMedia.setAttribute('src', 'assets/js/auth/media.js')
-        scriptClick.setAttribute('src', 'assets/js/auth/clickLogic.js')
         scriptContacts.setAttribute('src', 'assets/js/contacts/contacts.js')
 
         document.body.insertAdjacentElement('beforeend', scriptMedia)
-        document.body.insertAdjacentElement('beforeend', scriptClick)
         document.body.insertAdjacentElement('beforeend', scriptContacts)
+
     }
 </script>
 </body>

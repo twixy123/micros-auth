@@ -1,54 +1,7 @@
 const app = document.getElementById('app')
 let observer = new MutationObserver(mutNode => {
     scroll(0, 50)
-    if (localStorage.getItem('authType') == 'ECP') {
-        changeTitle(
-            msg.enterInSystem,
-            msg.autirizationWithEcp
-        )
-    } else if (localStorage.getItem('authType') == 'Login') {
-        changeTitle(
-            msg.enterInSystem,
-            msg.autirizationWithLoginAndPassword,
-            msg.enterWithECPKey
-        )
-    } else if (localStorage.getItem('authType') == 'ChoiseProfile') {
-        changeTitle(
-            msg.choiseProfile,
-            msg.pleaseChoiseProfileToAuthorized
-        )
-    } else if (localStorage.getItem('authType') == 'ForgotPassword') {
-        changeTitle(
-            msg.enterInSystem,
-            msg.forgotPassword
-        )
-    } else if (localStorage.getItem('authType') == 'Contacts') {
-        if (localStorage.getItem('authFromWhere') == 'ECP') {
-            changeTitle(
-                msg.technical_support,
-                '',
-                msg.enterWithECPKey
-            )
-        } else {
-            changeTitle(
-                msg.technical_support
-            )
-        }
-    } else if (localStorage.getItem('authType') == 'ForgotPassword') {
-        changeTitle(
-            msg.forgotPassword + '?'
-        )
-    } else if (localStorage.getItem('authType') == 'ToMailSended') {
-        changeTitle(
-            msg.checkMail
-        )
-    } else if (localStorage.getItem('authType') == 'SendToMail') {
-        changeTitle(
-            msg.changePassword
-        )
-    }
-    if (!infoSignTitle.innerHTML) infoSignTitle.style.padding = '0'
-    else infoSignTitle.style.padding = '15px 30px 0'
+    renderTitleAuth()
     obs(app)
 })
 toOzb.addEventListener('click', e => {
@@ -85,7 +38,7 @@ otherMethod.addEventListener('click', e => {
     if (localStorage.getItem('authType') == 'ChoiseProfile') {
         localStorage.setItem('authType', 'Login')
         ShowHiddenBlock(
-            [signInWithLogAndPassword,authSignInLogin],
+            [signInWithLogAndPassword, authSignInLogin],
             [changeProfile, authSignInPassword]
         )
         return
@@ -124,42 +77,22 @@ otherMethod.addEventListener('click', e => {
 })
 nextBtnToAuthPassword.addEventListener('click', e => {
     e.preventDefault()
-    /*if (authSignInLogin.getAttribute('data-use') == 'key') {
-        let check = false,
-            name = ''
-        notCheckedUser.innerHTML = msg.chooseUser
-        document.querySelectorAll('.userKeyLogin').forEach(e => {
-            if (e.parentElement.querySelector('.authUserCheck').value == 'checked') {
-                name = e.querySelector('.userName').innerHTML
-                check = true
-            }
-        })
-        if (check) {
-            chooseUserName.innerHTML = name
-            notCheckedUser.innerHTML = ''
-            loginPass.value = JSON.parse(localStorage.getItem('user')).password
-            ShowHiddenBlock(
-                [authSignInPassword],
-                [authSignInLogin]
-            )
-        }
-    } else {*/
-    if (localStorage.getItem('user')) {
-        if (JSON.parse(localStorage.getItem('user')).login != loginName.value) {
-            loginPass.value = ''
-        } else {
-            loginPass.value = JSON.parse(localStorage.getItem('user')).password
-        }
-    }
     checkInp(loginName, loginName.value.length > 3, msg.enterValidName)
     if (checkInp(loginName, loginName.value.length > 3, msg.enterValidName)) {
+        if (localStorage.getItem('user')) {
+            console.log(JSON.parse(localStorage.getItem('user')).login, loginName.value)
+            if (JSON.parse(localStorage.getItem('user')).login != loginName.value) {
+                loginPass.value = ''
+            } else {
+                loginPass.value = JSON.parse(localStorage.getItem('user')).password
+            }
+        }
         chooseUserName.innerHTML = loginName.value
         ShowHiddenBlock(
             [authSignInPassword],
             [authSignInLogin]
         )
     }
-    // }
 })
 prevBtnToAuthLogin.addEventListener('click', e => {
     e.preventDefault()
@@ -185,7 +118,7 @@ logInWithLogin.addEventListener('click', e => {
                     year: 'numeric'
                 }).format(new Date())
             }
-            if (localStorage.getItem('user')){
+            if (localStorage.getItem('user')) {
                 users = JSON.parse(localStorage.getItem('user'))
             }
 
@@ -213,19 +146,19 @@ otherUser.addEventListener('click', e => {
         [authSignInUsersblock]
     )
 })
-delUser.addEventListener('click', e=>{
+delUser.addEventListener('click', e => {
     e.preventDefault()
     const method = authSignInUsers.getAttribute('data-method')
     let links = document.querySelectorAll('.userKeyLogin')
-    if (method == 'login'){
+    if (method == 'login') {
         authSignInUsers.setAttribute('data-method', 'delete')
-        links.forEach(l=>{
+        links.forEach(l => {
             const logo = l.querySelector('.logo')
             logo.innerHTML = '<i class="fas fa-minus-circle" style="color:#c0392b;"></i>'
         })
-    }else{
+    } else {
         authSignInUsers.setAttribute('data-method', 'login')
-        links.forEach(l=>{
+        links.forEach(l => {
             const logo = l.querySelector('.logo')
             logo.innerHTML = '<i class="far fa-user-circle"></i>'
         })

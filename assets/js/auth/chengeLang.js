@@ -1,5 +1,3 @@
-console.log('Hello world')
-
 const idElemsToChangeText = [
     {
         tagId: [youUseOldVersion],
@@ -16,10 +14,6 @@ const idElemsToChangeText = [
     {
         tagId: [downloadEIMZO],
         text: msg.download
-    },
-    {
-        tagId: document.querySelectorAll('.validate_ECP'),
-        text: msg.certificate_validity_period + ':'
     },
     {
         tagId: [loginName.previousElementSibling],
@@ -128,6 +122,10 @@ const idElemsToChangeText = [
     {
         tagId: [otherUser],
         text: msg.addUser
+    },
+    {
+        tagId: [delOtherUser],
+        text: msg.userDel
     },
     {
         tagId: [textChooseUser],

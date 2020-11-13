@@ -1,5 +1,3 @@
-console.log('Hello world')
-
 const idElemsToChangeText = [
     {
         tagId: [youUseOldVersion],

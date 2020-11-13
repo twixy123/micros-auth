@@ -1,44 +1,32 @@
 @font-face {
     font-family: 'Roboto';
-    src: url('Roboto-Regular.ttf') format('truetype');
-    src: url("Roboto-Regular.ttf") format("truetype"),
-    url("Roboto-Regular.woff2") format("woff2"),
-    url("Roboto-Regular.woff") format("woff"),
-    url("Roboto-Regular.otf") format("opentype"),
-    url("Roboto-Regular.eot") format("embedded-opentype");
+    src: url('Roboto-Regular.woff2') format('woff2'),
+        url('Roboto-Regular.woff') format('woff');
     font-weight: 400;
     font-style: normal;
+    font-display: block;
 }
 @font-face {
     font-family: 'Roboto';
-    src: url('Roboto-Italic.ttf') format('truetype');
-    src: url("Roboto-Italic.ttf") format("truetype"),
-    url("Roboto-Italic.woff2") format("woff2"),
-    url("Roboto-Italic.woff") format("woff"),
-    url("Roboto-Italic.otf") format("opentype"),
-    url("Roboto-Italic.eot") format("embedded-opentype");
+    src: url('Roboto-Italic.woff2') format('woff2'),
+        url('Roboto-Italic.woff') format('woff');
     font-weight: 400;
     font-style: italic;
+    font-display: block;
 }
 @font-face {
     font-family: 'Roboto';
-    src: url('Roboto-Medium.ttf') format('truetype');
-    src: url("Roboto-Medium.ttf") format("truetype"),
-    url("Roboto-Medium.woff2") format("woff2"),
-    url("Roboto-Medium.woff") format("woff"),
-    url("Roboto-Medium.otf") format("opentype"),
-    url("Roboto-Medium.eot") format("embedded-opentype");
+    src: url('Roboto-Medium.woff2') format('woff2'),
+        url('Roboto-Medium.woff') format('woff');
     font-weight: 500;
     font-style: normal;
+    font-display: block;
 }
 @font-face {
     font-family: 'Roboto';
-    src: url('Roboto-MediumItalic.ttf') format('truetype');
-    src: url("Roboto-MediumItalic.ttf") format("truetype"),
-    url("Roboto-MediumItalic.woff2") format("woff2"),
-    url("Roboto-MediumItalic.woff") format("woff"),
-    url("Roboto-MediumItalic.otf") format("opentype"),
-    url("Roboto-MediumItalic.eot") format("embedded-opentype");
+    src: url('Roboto-Medium.woff2') format('woff2'),
+        url('Roboto-Medium.woff') format('woff');
     font-weight: 500;
     font-style: italic;
+    font-display: block;
 }

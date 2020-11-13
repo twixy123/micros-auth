@@ -23,7 +23,7 @@
     text-decoration: none;
     color: var(--color-logo);
     padding: 5px 0;
-    font-family: 'Roboto';
+    font-family: Roboto,sans-serif;
 }
 
 .usual_link:hover {
@@ -70,7 +70,7 @@ body {
 }
 
 #oldBrowser p{
-    font-family: Roboto;
+    font-family:Roboto,sans-serif;
     font-size: 18px;
     text-align: center;
     margin-bottom: 15px;
@@ -129,7 +129,7 @@ body {
 
 .main__title {
     margin-top: 20px;
-    font-family: 'Roboto';
+    font-family: Roboto,sans-serif;
     color: var(--color-gray);
     font-size: 24px;
     font-weight: 400;
@@ -144,7 +144,7 @@ body {
 }
 
 #infoSignTitle {
-    font-family: 'Roboto';
+    font-family: Roboto,sans-serif;
     font-size: 14px;
     color: var(--color-dark-gray);
     box-sizing: border-box;
@@ -161,20 +161,25 @@ body {
     flex-direction: column;
 }
 
-#notFound{
+#notFound,
+#notFoundKeys{
+    width: 100%;
+    box-sizing: border-box;
     padding: 30px;
     align-items: center;
     flex-direction: column;
 }
 
-#notFound i{
+#notFound i,
+#notFoundKeys i{
     color: #e1b12c;
     font-size: 40px;
     margin-bottom: 10px;
 }
 
-#notFound p{
-    font-family: Roboto;
+#notFound p,
+#notFoundKeys p{
+    font-family:Roboto,sans-serif;
     font-size: 16px;
     font-weight: 500;
     color: var(--color-dark-gray);
@@ -182,7 +187,8 @@ body {
     text-align: center;
 }
 
-#notFound a{
+#notFound a,
+#notFoundKeys a{
     font-size: 16px;
     font-style: italic;
 }
@@ -251,7 +257,7 @@ body {
 }*/
 
 .details {
-    font-family: 'Roboto';
+    font-family: Roboto,sans-serif;
     display: flex;
     flex-direction: column;
 }
@@ -307,7 +313,7 @@ body {
     position: absolute;
     left: 50px;
     bottom: 0;
-    font-family: Roboto;
+    font-family:Roboto,sans-serif;
     border-radius: 3px;
 }
 
@@ -342,7 +348,7 @@ body {
 }
 
 #or {
-    font-family: Roboto;
+    font-family:Roboto,sans-serif;
 }
 
 .or_block .line {
@@ -370,7 +376,7 @@ body {
 
 /*.use_other_method a {
     font-size: 14px;
-    font-family: 'Roboto';
+    font-family: Roboto,'Times New Roman,sans-serif';
     width: 100%;
     border: 1px solid var(--color-logo);
     padding: 6px;
@@ -394,7 +400,7 @@ body {
 }
 
 #condition p{
-    font-family: Roboto;
+    font-family:Roboto,sans-serif;
     font-style: italic;
     font-size: 12px;
     color: var(--color-border-gray);
@@ -412,7 +418,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: "Roboto";
+    font-family: Roboto,sans-serif;
     color: var(--color-dark-gray);
     font-size: 14px;
     font-weight: 400;
@@ -442,7 +448,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: Roboto;
+    font-family:Roboto,sans-serif;
     font-size: 12px;
     color: var(--color-dark-gray);
     margin: 10px 0;
@@ -473,7 +479,7 @@ body {
 .field > .small-description,
 #notCheckedUser{
     padding: 5px 0;
-    font-family: 'Roboto';
+    font-family: Roboto,sans-serif;
     font-size: 10px;
     color: #b63535;
 }
@@ -495,7 +501,7 @@ body {
 }
 
 .field label {
-    font-family: Roboto;
+    font-family:Roboto,sans-serif;
     font-size: 14px;
     line-height: 25px;
     padding-bottom: 6px;
@@ -504,7 +510,7 @@ body {
 
 .field input {
     font-size: 16px;
-    font-family: Roboto;
+    font-family:Roboto,sans-serif;
     color: var(--color-dark-gray);
     border: 1px solid var(--color-border-gray);
     padding: 6px 6px 6px 8px;
@@ -516,7 +522,7 @@ body {
 
 .field input[disabled=disabled] {
     font-size: 16px;
-    font-family: Roboto;
+    font-family:Roboto,sans-serif;
     color: var(--color-dark-gray);
     border: 1px solid var(--color-border-gray);
     background-color:var(--color-light-gray);
@@ -529,7 +535,7 @@ body {
 .field textarea {
     max-width: 320px;
     font-size: 18px;
-    font-family: Roboto;
+    font-family:Roboto,sans-serif;
     color: var(--color-dark-gray);
     border: 1px solid var(--color-border-gray);
     padding: 10px 5px;
@@ -568,7 +574,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: Roboto;
+    font-family:Roboto,sans-serif;
     flex-direction: row-reverse;
     box-sizing: border-box;
 }
@@ -621,7 +627,7 @@ body {
 #addUser span,
 #delUser span{
     text-align: center;
-    font-family: Roboto;
+    font-family:Roboto,sans-serif;
     color: var(--color-dark-gray);
     font-size: 14px;
     width: 100%;
@@ -716,7 +722,7 @@ body {
 }
 
 #checkYourEmail p{
-    font-family: Roboto;
+    font-family:Roboto,sans-serif;
     font-size: 16px;
     font-weight: 500;
     color: var(--color-dark-gray);
@@ -738,14 +744,14 @@ body {
     width: fit-content;
     align-items: center;
     justify-content: center;
-    font-family: Roboto;
+    font-family:Roboto,sans-serif;
     max-width: 380px;
 }
 
 #appFooter p {
     font-size: 12px;
     color: var(--color-dark-gray);
-    font-family: 'Roboto';
+    font-family: Roboto,sans-serif;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -772,7 +778,7 @@ body {
 }
 
 .change_language_block button{
-    font-family: Roboto;
+    font-family:Roboto,sans-serif;
     font-size: 12px;
     border: none;
     outline: none;
