@@ -4,7 +4,8 @@
         url('Roboto-Regular.woff') format('woff');
     font-weight: 400;
     font-style: normal;
-    font-display: block;
+    font-display: swap;
+    x-height: 1;
 }
 @font-face {
     font-family: 'Roboto';
@@ -12,7 +13,8 @@
         url('Roboto-Italic.woff') format('woff');
     font-weight: 400;
     font-style: italic;
-    font-display: block;
+    font-display: swap;
+    x-height: 1;
 }
 @font-face {
     font-family: 'Roboto';
@@ -20,7 +22,8 @@
         url('Roboto-Medium.woff') format('woff');
     font-weight: 500;
     font-style: normal;
-    font-display: block;
+    font-display: swap;
+    x-height: 1;
 }
 @font-face {
     font-family: 'Roboto';
@@ -28,5 +31,6 @@
         url('Roboto-Medium.woff') format('woff');
     font-weight: 500;
     font-style: italic;
-    font-display: block;
+    font-display: swap;
+    x-height: 1;
 }
