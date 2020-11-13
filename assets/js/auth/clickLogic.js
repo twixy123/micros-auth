@@ -80,12 +80,10 @@ nextBtnToAuthPassword.addEventListener('click', e => {
     checkInp(loginName, loginName.value.length > 3, msg.enterValidName)
     if (checkInp(loginName, loginName.value.length > 3, msg.enterValidName)) {
         if (localStorage.getItem('user')) {
-            console.log(JSON.parse(localStorage.getItem('user')).login, loginName.value)
-            if (JSON.parse(localStorage.getItem('user')).login != loginName.value) {
-                loginPass.value = ''
-            } else {
-                loginPass.value = JSON.parse(localStorage.getItem('user')).password
-            }
+            console.log(JSON.parse(localStorage.getItem('user')).filter(us=>us.login === loginName.value))
+            loginPass.value = JSON.parse(localStorage.getItem('user')).find(us=>us.login === loginName.value)
+                ? JSON.parse(localStorage.getItem('user')).filter(us=>us.login === loginName.value)[0].password
+                : ''
         }
         chooseUserName.innerHTML = loginName.value
         ShowHiddenBlock(
@@ -121,8 +119,8 @@ logInWithLogin.addEventListener('click', e => {
             if (localStorage.getItem('user')) {
                 users = JSON.parse(localStorage.getItem('user'))
             }
-
-            users.push(user)
+            if (!users.find(us=>us.login === user.login))
+                users.push(user)
             localStorage.setItem('user', JSON.stringify(users))
 
             authSignInLogin.setAttribute('data-use', 'key')
@@ -165,8 +163,15 @@ delUser.addEventListener('click', e => {
             delUser.querySelector('i').style.color = '#777777'
         })
     }
-
 })
+
+delUser.addEventListener('mouseover', ()=>{
+    delUser.querySelector('i').style.color = '#c0392b'
+})
+delUser.addEventListener('mouseout', ()=>{
+    delUser.querySelector('i').style.color = '#777777'
+})
+
 forgotPassword.addEventListener('click', e => {
     e.preventDefault()
     localStorage.setItem('authType', 'ForgotPassword')
