@@ -155,12 +155,14 @@ delUser.addEventListener('click', e => {
         links.forEach(l => {
             const logo = l.querySelector('.logo')
             logo.innerHTML = '<i class="fas fa-minus-circle" style="color:#c0392b;"></i>'
+            delUser.querySelector('i').style.color = '#c0392b'
         })
     } else {
         authSignInUsers.setAttribute('data-method', 'login')
         links.forEach(l => {
             const logo = l.querySelector('.logo')
             logo.innerHTML = '<i class="far fa-user-circle"></i>'
+            delUser.querySelector('i').style.color = '#777777'
         })
     }
 
