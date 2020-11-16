@@ -132,7 +132,7 @@ logInWithLogin.addEventListener('click', e => {
         )
     }
 })
-otherUser.addEventListener('click', e => {
+addUser.addEventListener('click', e => {
     e.preventDefault()
     authSignInLogin.setAttribute('data-use', 'login')
     loginName.value = ''
