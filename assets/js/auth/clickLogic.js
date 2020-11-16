@@ -163,7 +163,6 @@ delUser.addEventListener('click', e => {
         })
     }
 })
-
 delUser.addEventListener('mouseover', ()=>{
     delUser.querySelector('i').style.color = '#c0392b'
 })
@@ -171,7 +170,6 @@ delUser.addEventListener('mouseout', ()=>{
     if (authSignInUsers.getAttribute('data-method')=='login')
         delUser.querySelector('i').style.color = '#777777'
 })
-
 forgotPassword.addEventListener('click', e => {
     e.preventDefault()
     localStorage.setItem('authType', 'ForgotPassword')

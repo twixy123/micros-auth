@@ -290,6 +290,7 @@ function renderUserLogin() {
             if (authSignInUsers.getAttribute('data-method') == 'delete') {
                 let newUsers = userGet.filter(e => e.id !== +usID)
                 localStorage.setItem('user', JSON.stringify(newUsers))
+                delUser.querySelector('i').style.color = '#777777'
                 renderUserLogin()
                 return
             }
