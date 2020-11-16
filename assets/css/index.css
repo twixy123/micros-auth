@@ -570,6 +570,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .form_footer {
@@ -602,30 +603,24 @@ body {
     flex-direction: column;
 }
 
-#addUser{
-    border-left: 1px solid var(--color-border-gray);
-}
-
 #addUser,
 #delUser{
     background: none;
     border: none;
     cursor: pointer;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
+    align-items: center;
     border-bottom: 1px solid var(--color-border-gray);
-    padding: 10px;
-}
-#addUser{
-    border-right: 1px solid var(--color-border-gray);
+    padding: 20px;
+    width: 100%;
 }
 
 #addUser i,
 #delUser i{
     font-size: 30px;
-    margin-right: 5px;
+    margin-right: 20px;
     color: var(--color-lang-gray);
-    width: 50%;
 }
 
 #addUser span,
@@ -634,7 +629,6 @@ body {
     font-family:Roboto,sans-serif;
     color: var(--color-dark-gray);
     font-size: 14px;
-    width: 100%;
 }
 
 #addUser:hover,
