@@ -80,7 +80,6 @@ nextBtnToAuthPassword.addEventListener('click', e => {
     checkInp(loginName, loginName.value.length > 3, msg.enterValidName)
     if (checkInp(loginName, loginName.value.length > 3, msg.enterValidName)) {
         if (localStorage.getItem('user')) {
-            console.log(JSON.parse(localStorage.getItem('user')).filter(us=>us.login === loginName.value))
             loginPass.value = JSON.parse(localStorage.getItem('user')).find(us=>us.login === loginName.value)
                 ? JSON.parse(localStorage.getItem('user')).filter(us=>us.login === loginName.value)[0].password
                 : ''
