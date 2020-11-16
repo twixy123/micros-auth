@@ -436,10 +436,13 @@
         var oldBrowser = document.getElementById('oldBrowser')
         var loading = document.getElementById('loading')
         var appFooter = document.getElementById('appFooter')
+        var appMain = document.getElementById('appMain')
         loading.classList.add('hidden')
         appFooter.classList.add('hidden')
         oldBrowser.classList.remove('hidden')
         oldBrowser.classList.add('show')
+        appMain.classList.remove('show')
+        appMain.classList.add('hidden')
     } else {
         var scriptMedia = document.createElement('script')
         var scriptContacts = document.createElement('script')
