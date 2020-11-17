@@ -4,25 +4,29 @@ const awaitLoadForWindow = () => {
             orgName: 'ASPEKT OILAVIY KORXONA',
             directorName: 'ЯДЫКОВА ТАТЬЯНА КОНСТАТИНОВНА',
             tin: '302654054',
-            fromTo: '15.07.2019 - 15.07.2021'
+            from: '15.07.2019',
+            to: '15.07.2021'
         },
         {
             orgName: 'MICROS DEVELOPMENT XK',
             directorName: 'ВЕКСЛЕР АЛЕКСАНДР СЕМЕНОВИЧ',
             tin: '302738051',
-            fromTo: '09.11.2018 - 09.11.2020'
+            from: '09.11.2018',
+            to: '09.11.2020'
         },
         {
             orgName: 'SIMPLE GAMES MCHJ',
             directorName: 'GALIAXMEDOVA KAMILA RAFISOVNA',
             tin: '305015214',
-            fromTo: '30.11.2019 - 20.11.2021'
+            from: '30.11.2019',
+            to: '20.11.2021'
         },
         {
             orgName: null,
             directorName: 'ВЕКСЛЕР ВИКТОР АЛЕКСАНДРОВИЧ',
             tin: '487007226',
-            fromTo: '21.07.2020 - 21.07.2022'
+            from: '21.07.2020',
+            to: '21.07.2022'
         },
     ]
     return new Promise(r => setTimeout(() => r(), 1000)).then(() => {
@@ -42,9 +46,11 @@ async function render() {
 
 function renderKeys(data) {
     data.forEach(key => {
+        let toDate = `${key.to.split('.')[1]}.${key.to.split('.')[0]}.${key.to.split('.')[2]}`
         const list = `
                         <li class="main__list_with_ecp">
-                            <a href="!#" class="main__link_with_ecp ecp__keys">
+                            <a href="#" class="main__link_with_ecp 
+${new Date(toDate).getTime() < new Date().getTime() ? 'expired_ecp__keys' : 'ecp__keys'}">
                                 <span class="logo">
                                 ${key.orgName ? `<i class="far fa-building"></i>` : `<i class="far fa-user-circle"></i>`}
                                 </span>
@@ -57,7 +63,7 @@ function renderKeys(data) {
                                   <i class="fas fa-info-circle"></i>
                                   <span class="ecp_info__text">
                                       <span class="validate_ECP">${msg.certificate_validity_period}:</span>
-                                      <span class="validate_date_ECP">${key.fromTo}</span>
+                                      <span class="validate_date_ECP">${key.from} - ${key.to}</span>
                                   </span>
                                 </span>
                             </a>
@@ -65,6 +71,21 @@ function renderKeys(data) {
                     `
         keysAuth.insertAdjacentHTML('beforeend', list)
     })
+    setTimeout(()=>{
+        const expired = document.querySelectorAll('.expired_ecp__keys')
+        if (expired){
+            console.log(expired)
+            expired.forEach(ex=>{
+                ex.addEventListener('click', e=>{
+                    e.preventDefault()
+                })
+                ex.querySelectorAll('span').forEach(sp=>{
+                    sp.style = 'color: red !important;'
+                })
+                ex.style.background = '#ffdad64d'
+            })
+        }
+    },0)
     ShowHiddenBlock(
         [keysAuth],
         [notFoundKeys]
