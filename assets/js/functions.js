@@ -71,21 +71,18 @@ ${new Date(toDate).getTime() < new Date().getTime() ? 'expired_ecp__keys' : 'ecp
                     `
         keysAuth.insertAdjacentHTML('beforeend', list)
     })
-    setTimeout(()=>{
-        const expired = document.querySelectorAll('.expired_ecp__keys')
-        if (expired){
-            console.log(expired)
-            expired.forEach(ex=>{
-                ex.addEventListener('click', e=>{
-                    e.preventDefault()
-                })
-                ex.querySelectorAll('span').forEach(sp=>{
-                    sp.style = 'color: red !important;'
-                })
-                ex.style.background = '#ffdad64d'
+    const expired = document.querySelectorAll('.expired_ecp__keys')
+    if (expired) {
+        expired.forEach(ex => {
+            ex.addEventListener('click', e => {
+                e.preventDefault()
             })
-        }
-    },0)
+            ex.querySelectorAll('span').forEach(sp => {
+                sp.style = 'color: red !important;'
+            })
+            ex.style.background = '#ffdad64d'
+        })
+    }
     ShowHiddenBlock(
         [keysAuth],
         [notFoundKeys]

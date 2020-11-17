@@ -51,7 +51,7 @@ backToRegWithEcp.addEventListener('click', e => {
     e.preventDefault()
     ShowHiddenBlock([regWithECP], [contacts])
 })
-const ecpKey = document.querySelectorAll('.main__link_with_ecp')
+const ecpKey = document.querySelectorAll('.ecp__keys')
 ecpKey.forEach((key, idx, arr) => {
     key.addEventListener('click', e => {
         e.preventDefault()
